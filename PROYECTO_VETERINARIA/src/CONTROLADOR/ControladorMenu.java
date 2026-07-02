@@ -41,3 +41,32 @@ public class ControladorMenu implements ActionListener {
         // Llama a tu clase ProcesosPermisos para habilitar/deshabilitar los componentes correspondientes
         ControladorPermisos.AplicarRestricciones(vistaMenu, usuarioLogueado.getFk_id_role());
     }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == vistaMenu.itemRegistrarCli){
+            VistasFactory.CrearVista("RegistrarClie", "RegistrarClientes", vistaMenu.spnContenedor);
+        }
+        if (e.getSource() == vistaMenu.itemTabla){
+            VistasFactory.CrearVista("Tabladeempleados", "Tabla De Empleados", vistaMenu.spnContenedor);
+        }
+        if (e.getSource() == vistaMenu.itemEliminar){
+            VistasFactory.CrearVista("EliminarEmpleado", "Eliminar Empleado", vistaMenu.spnContenedor);
+        }
+        if (e.getSource() == vistaMenu.itemEstado){
+            VistasFactory.CrearVista("Modificar", "Modificador", vistaMenu.spnContenedor);
+        }
+        if (e.getSource() == vistaMenu.itemAgregar) {
+            VistasFactory.CrearVista("AgregarEmpleado", "Agregar Nuevo Empleado", vistaMenu.spnContenedor);
+        }
+        if (e.getSource() == vistaMenu.itemAgenda) {
+            VistasFactory.CrearVista("AgendaCitas", "Agenda de Citas", vistaMenu.spnContenedor);
+        }
+        if (e.getSource() == vistaMenu.itemCancelar) {
+        VistasFactory.CrearVista("CancelarCita", "Cancelar Cita", vistaMenu.spnContenedor);
+        }
+        if (e.getSource() == vistaMenu.itemCitas) {
+        VistasFactory.CrearVista("AgendasAsignadas", "Agenda de Citas Asignadas", vistaMenu.spnContenedor);
+        }
+    }
+}
