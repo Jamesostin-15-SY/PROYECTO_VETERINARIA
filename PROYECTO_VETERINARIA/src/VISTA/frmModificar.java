@@ -99,12 +99,12 @@ public class frmModificar extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnModificar;
-    private javax.swing.JComboBox<String> cbxEstado;
+    public javax.swing.JButton btnModificar;
+    public javax.swing.JComboBox<String> cbxEstado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel pnlModificador;
-    private javax.swing.JTextField txtIDCita;
+    public javax.swing.JTextField txtIDCita;
     // End of variables declaration//GEN-END:variables
 }
