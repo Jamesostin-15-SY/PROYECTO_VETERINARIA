@@ -26,21 +26,93 @@ public class frmMenusVeterinaria extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        spnContenedor = new javax.swing.JDesktopPane();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        MenuClientes = new javax.swing.JMenu();
+        itemRegistrarCli = new javax.swing.JMenuItem();
+        MenuCitas = new javax.swing.JMenu();
+        itemCancelar = new javax.swing.JMenuItem();
+        itemAgenda = new javax.swing.JMenuItem();
+        MenuAgendas = new javax.swing.JMenu();
+        itemCitas = new javax.swing.JMenuItem();
+        Modificar = new javax.swing.JMenu();
+        itemEstado = new javax.swing.JMenuItem();
+        MenuEmpleados = new javax.swing.JMenu();
+        itemAgregar = new javax.swing.JMenuItem();
+        itemEliminar = new javax.swing.JMenuItem();
+        itemTabla = new javax.swing.JMenuItem();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1006, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        spnContenedor.setBackground(new java.awt.Color(0, 153, 0));
+
+        javax.swing.GroupLayout spnContenedorLayout = new javax.swing.GroupLayout(spnContenedor);
+        spnContenedor.setLayout(spnContenedorLayout);
+        spnContenedorLayout.setHorizontalGroup(
+            spnContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 910, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 551, Short.MAX_VALUE)
+        spnContenedorLayout.setVerticalGroup(
+            spnContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 580, Short.MAX_VALUE)
         );
+
+        getContentPane().add(spnContenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 580));
+
+        MenuClientes.setText("Clientes");
+
+        itemRegistrarCli.setText("Registrar Clientes");
+        MenuClientes.add(itemRegistrarCli);
+
+        jMenuBar2.add(MenuClientes);
+
+        MenuCitas.setText("Citas");
+
+        itemCancelar.setText("Cancelar Cita");
+        MenuCitas.add(itemCancelar);
+
+        itemAgenda.setText("Agenda De Citas");
+        itemAgenda.addActionListener(this::itemAgendaActionPerformed);
+        MenuCitas.add(itemAgenda);
+
+        jMenuBar2.add(MenuCitas);
+
+        MenuAgendas.setText("Agenda");
+
+        itemCitas.setText("Citas Asignadas");
+        MenuAgendas.add(itemCitas);
+
+        jMenuBar2.add(MenuAgendas);
+
+        Modificar.setText("Procesos");
+
+        itemEstado.setText("Estado De La Cita");
+        Modificar.add(itemEstado);
+
+        jMenuBar2.add(Modificar);
+
+        MenuEmpleados.setText("Empleados");
+
+        itemAgregar.setText("Agregar empleados");
+        MenuEmpleados.add(itemAgregar);
+
+        itemEliminar.setText("Eliminar Empleado");
+        MenuEmpleados.add(itemEliminar);
+
+        itemTabla.setText("Tabla De Empleados");
+        MenuEmpleados.add(itemTabla);
+
+        jMenuBar2.add(MenuEmpleados);
+
+        setJMenuBar(jMenuBar2);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void itemAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAgendaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemAgendaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -68,5 +140,20 @@ public class frmMenusVeterinaria extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu MenuAgendas;
+    private javax.swing.JMenu MenuCitas;
+    private javax.swing.JMenu MenuClientes;
+    private javax.swing.JMenu MenuEmpleados;
+    private javax.swing.JMenu Modificar;
+    private javax.swing.JMenuItem itemAgenda;
+    private javax.swing.JMenuItem itemAgregar;
+    private javax.swing.JMenuItem itemCancelar;
+    private javax.swing.JMenuItem itemCitas;
+    private javax.swing.JMenuItem itemEliminar;
+    private javax.swing.JMenuItem itemEstado;
+    private javax.swing.JMenuItem itemRegistrarCli;
+    private javax.swing.JMenuItem itemTabla;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JDesktopPane spnContenedor;
     // End of variables declaration//GEN-END:variables
 }
