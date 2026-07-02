@@ -1,13 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package PRINCIPAL;
+import VISTA.*;
+import CONTROLADOR.*;
 
-/**
- *
- * @author James
- */
 public class Main {
+    public static void main(String[] args) {
+        // 1. Crear la vista
+        frmLogin vista = new frmLogin();
+        
+        // 2. Crear el controlador asignándole la vista
+        ControladorLogin loginControlador = new ControladorLogin(vista);
+        
+        // 3. Lanzar la aplicación
+        loginControlador.iniciar();
+    }
     
 }

@@ -93,7 +93,7 @@ public class AgregarMascotas extends javax.swing.JInternalFrame {
         jLabel6.setText("Registrar Mascota");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 520));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
