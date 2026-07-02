@@ -1,5 +1,5 @@
 package PROCESOS;
-
+import VISTA.*;
 public class ProcesosPermisos {
      public static void AplicarRestricciones(frmMenusVeterinaria mv, int idRol) {
 

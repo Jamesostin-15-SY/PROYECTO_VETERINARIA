@@ -1,5 +1,6 @@
 package PROCESOS;
-
+import MODELO.*;
+import VISTA.*;
 public class ProcesosLogin {
     public static UsuariosCredenciales Leer(frmLogin fl) {
         UsuariosCredenciales uc = new UsuariosCredenciales();
