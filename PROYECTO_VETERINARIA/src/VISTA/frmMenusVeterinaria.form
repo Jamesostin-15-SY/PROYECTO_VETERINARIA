@@ -63,6 +63,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Citas Asignadas"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </MenuItem>
           </SubComponents>
         </Menu>

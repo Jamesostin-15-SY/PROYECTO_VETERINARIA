@@ -148,7 +148,7 @@ public class frmMenusVeterinaria extends javax.swing.JFrame {
     public javax.swing.JMenuItem itemAgenda;
     public javax.swing.JMenuItem itemAgregar;
     public javax.swing.JMenuItem itemCancelar;
-    private javax.swing.JMenuItem itemCitas;
+    public javax.swing.JMenuItem itemCitas;
     public javax.swing.JMenuItem itemEliminar;
     public javax.swing.JMenuItem itemEstado;
     public javax.swing.JMenuItem itemRegistrarCli;

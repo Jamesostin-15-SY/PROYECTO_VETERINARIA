@@ -8,14 +8,14 @@ package VISTA;
  *
  * @author pc
  */
-public class frmDespedirEmpleados extends javax.swing.JFrame {
+public class frmEliminarEmpleado extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frmDespedirEmpleados.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frmEliminarEmpleado.class.getName());
 
     /**
      * Creates new form DespedirEmpleados
      */
-    public frmDespedirEmpleados() {
+    public frmEliminarEmpleado() {
         initComponents();
     }
 
@@ -100,7 +100,7 @@ public class frmDespedirEmpleados extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new frmDespedirEmpleados().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new frmEliminarEmpleado().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

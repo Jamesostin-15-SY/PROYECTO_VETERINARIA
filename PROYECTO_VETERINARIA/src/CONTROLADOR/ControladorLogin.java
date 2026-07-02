@@ -1,9 +1,8 @@
 package CONTROLADOR;
 
 import DAO.*;
-import MODELO.UsuariosCredenciales;
-import VISTA.frmLogin;
-import VISTA.frmMenusVeterinaria;
+import MODELO.*;
+import VISTA.*;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
