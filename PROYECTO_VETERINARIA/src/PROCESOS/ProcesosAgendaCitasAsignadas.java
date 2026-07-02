@@ -1,13 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package PROCESOS;
-
-/**
- *
- * @author PC
- */
+import VISTA.*;
+import javax.swing.table.DefaultTableModel;
 public class ProcesosAgendaCitasAsignadas {
+    public static DefaultTableModel FormatoTabla(frmAgendadeCitasAsignadas fc) {
+        String titulos[] = {"ID Cita", "Mascota", "Veterinario", "Fecha y Hora", "Servicio", "Motivo", "Estado"};
+        DefaultTableModel mt = new DefaultTableModel(null, titulos) {
+            
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }    
+        };        
+        fc.tblAgendaDeCitas.setModel(mt);
+        return mt;
+    }
     
 }
