@@ -55,10 +55,10 @@ public class frmMenusVeterinaria extends javax.swing.JFrame {
         );
         spnContenedorLayout.setVerticalGroup(
             spnContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+            .addGap(0, 560, Short.MAX_VALUE)
         );
 
-        getContentPane().add(spnContenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 580));
+        getContentPane().add(spnContenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 560));
 
         MenuClientes.setText("Clientes");
 
@@ -140,20 +140,20 @@ public class frmMenusVeterinaria extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu MenuAgendas;
-    private javax.swing.JMenu MenuCitas;
-    private javax.swing.JMenu MenuClientes;
-    private javax.swing.JMenu MenuEmpleados;
-    private javax.swing.JMenu Modificar;
-    private javax.swing.JMenuItem itemAgenda;
-    private javax.swing.JMenuItem itemAgregar;
-    private javax.swing.JMenuItem itemCancelar;
+    public javax.swing.JMenu MenuAgendas;
+    public javax.swing.JMenu MenuCitas;
+    public javax.swing.JMenu MenuClientes;
+    public javax.swing.JMenu MenuEmpleados;
+    public javax.swing.JMenu Modificar;
+    public javax.swing.JMenuItem itemAgenda;
+    public javax.swing.JMenuItem itemAgregar;
+    public javax.swing.JMenuItem itemCancelar;
     private javax.swing.JMenuItem itemCitas;
-    private javax.swing.JMenuItem itemEliminar;
-    private javax.swing.JMenuItem itemEstado;
-    private javax.swing.JMenuItem itemRegistrarCli;
-    private javax.swing.JMenuItem itemTabla;
+    public javax.swing.JMenuItem itemEliminar;
+    public javax.swing.JMenuItem itemEstado;
+    public javax.swing.JMenuItem itemRegistrarCli;
+    public javax.swing.JMenuItem itemTabla;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JDesktopPane spnContenedor;
+    public javax.swing.JDesktopPane spnContenedor;
     // End of variables declaration//GEN-END:variables
 }
