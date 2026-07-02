@@ -96,10 +96,10 @@ public class frmAgregarEmpleado extends javax.swing.JFrame {
         pnlContrato.add(cbxPuestoLaboral, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, 270, 50));
 
         btnAgregarCredencial.setText("AGREGAR CREDENCIAL");
-        pnlContrato.add(btnAgregarCredencial, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 200, 70));
+        pnlContrato.add(btnAgregarCredencial, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 300, 230, 70));
 
         btnRegistrarEmpleado.setText("REGISTRAR EMPLEADO");
-        pnlContrato.add(btnRegistrarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, 200, 70));
+        pnlContrato.add(btnRegistrarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, 230, 70));
 
         getContentPane().add(pnlContrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 470));
 
