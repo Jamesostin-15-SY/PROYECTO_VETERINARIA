@@ -46,12 +46,10 @@ public class ControladorLogin implements ActionListener {
 
     private void ejecutarLogueo() {
         String usuario = vistaLogin.txtUsuario.getText().trim();
-        
-      
-   // Cambia vistaLogin.txtContrasena por vistaLogin.jpfContraseña
-String contrasena = new String(vistaLogin.jpfContrasenia.getPassword()).trim();
+        // Cambia vistaLogin.txtContrasena por vistaLogin.jpfContraseña
+        String contrasena = new String(vistaLogin.jpfContrasenia.getPassword()).trim();
 
-//jpfContraseña.getPassword()).trim();
+        //jpfContraseña.getPassword()).trim();
         // Validación de campos vacíos
         if (usuario.isEmpty() || contrasena.isEmpty()) {
             JOptionPane.showMessageDialog(vistaLogin, "Por favor, complete ambos campos.", "Campos Vacíos", JOptionPane.WARNING_MESSAGE);
