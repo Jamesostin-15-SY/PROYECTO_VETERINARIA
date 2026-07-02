@@ -4,22 +4,22 @@ import PROCESOS.*;
 import java.sql.*;
 public class ClienteDAO {
     public boolean registrar(Clientes cliente) {
-        String sql = "INSERT INTO clientes (dni_cliente, primer_nombre, segundo_nombre, "
-                   + "apellido_paterno, apellido_materno, direccion, telefono) "
-                   + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO clientes (dni_cliente, primer_nombre, segundo_nombre, " +
+                     "apellido_paterno, apellido_materno, direccion, telefono) " +
+                     "VALUES (?, ?, ?, ?, ?, ?, ?)";
         
-        // 1. Instanciamos tu clase Conexion para que ejecute su constructor
+        //Instanciamos tu clase Conexion para que ejecute su constructor
         Conexion conexionAux = new Conexion(); 
         
-        // 2. Extraemos el objeto Connection usando tu getter getCon()
+        //Extraemos el objeto Connection usando tu getter getCon()
         Connection con = conexionAux.getCon();
         
-        // 3. Validamos que la conexión no sea null antes de continuar
+        //Validamos que la conexión no sea null antes de continuar
         if (con == null) {
             return false; 
         }
 
-        // 4. Ejecutamos el PreparedStatement
+        //Ejecutamos el PreparedStatement
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             
             ps.setString(1, cliente.getDni_cliente());
@@ -37,7 +37,6 @@ public class ClienteDAO {
             Mensajes.M1("Error al registrar cliente en la BD: " + e.getMessage());
             return false;
         } finally {
-            // Es buena práctica cerrar la conexión manualmente ya que no se abrió en el try-with-resources
             try {
                 if (con != null && !con.isClosed()) {
                     con.close();

@@ -8,12 +8,12 @@ package VISTA;
  *
  * @author pc
  */
-public class frmrCancelarCita extends javax.swing.JInternalFrame {
+public class frmCancelarCita extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form frmrCancelarCitas
      */
-    public frmrCancelarCita() {
+    public frmCancelarCita() {
         initComponents();
     }
 

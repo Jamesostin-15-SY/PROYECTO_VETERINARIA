@@ -16,7 +16,8 @@ public class VistasFactory {
     public static void CrearVista (String nomvista, String titulo, JDesktopPane contenedor) {
         if (nomvista.equals("RegistrarClie")){
             frmRegistrarClientes FRC = new frmRegistrarClientes();
-            //ControlEstudiante ce = new ControlEstudiante(fes);
+            
+            ControladorCliente CC = new ControladorCliente(FRC);
             FRC.setTitle(titulo);
             PresentarVista(FRC, contenedor);
         }

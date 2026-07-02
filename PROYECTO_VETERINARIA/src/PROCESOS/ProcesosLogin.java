@@ -1,6 +1,7 @@
 package PROCESOS;
 import MODELO.*;
 import VISTA.*;
+
 public class ProcesosLogin {
     public static UsuariosCredenciales Leer(frmLogin fl) {
         UsuariosCredenciales uc = new UsuariosCredenciales();
@@ -9,11 +10,9 @@ public class ProcesosLogin {
         uc.setContrasena(new String(fl.jpfContrasenia.getPassword())); 
         return uc;
     }
-     public static void LimpiarEntradas(frmLogin fl) {
-         
+    public static void LimpiarEntradas(frmLogin fl) {
         fl.txtUsuario.setText("");
         fl.jpfContrasenia.setText("");
         fl.txtUsuario.requestFocus();
     }
-
 }
