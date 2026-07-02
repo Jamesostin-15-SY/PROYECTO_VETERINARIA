@@ -1,4 +1,3 @@
-
 package CONTROLADOR;
 import DAO.*;
 import VISTA.*;
@@ -45,6 +44,10 @@ public class ControladorCliente implements ActionListener{
         // Validación de longitud del DNI
         if (vista.txtDniClie.getText().trim().length() != 8) {
             Mensajes.M1("El DNI debe tener exactamente 8 dígitos.");
+            return;
+        }
+        if (vista.txtTelefonoClie.getText().trim().length() != 9){
+            Mensajes.M1("El numero de telefono deb ser de 9 digitos");
             return;
         }
 

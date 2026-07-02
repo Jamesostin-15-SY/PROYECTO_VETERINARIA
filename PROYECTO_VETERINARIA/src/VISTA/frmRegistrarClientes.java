@@ -43,6 +43,8 @@ public class frmRegistrarClientes extends javax.swing.JInternalFrame {
         btnAgregarMascota = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setIconifiable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 0));

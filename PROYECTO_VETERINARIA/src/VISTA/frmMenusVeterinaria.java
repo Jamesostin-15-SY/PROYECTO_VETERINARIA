@@ -43,22 +43,19 @@ public class frmMenusVeterinaria extends javax.swing.JFrame {
         itemTabla = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        spnContenedor.setBackground(new java.awt.Color(0, 153, 0));
+        spnContenedor.setBackground(new java.awt.Color(0, 51, 0));
 
         javax.swing.GroupLayout spnContenedorLayout = new javax.swing.GroupLayout(spnContenedor);
         spnContenedor.setLayout(spnContenedorLayout);
         spnContenedorLayout.setHorizontalGroup(
             spnContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 910, Short.MAX_VALUE)
+            .addGap(0, 922, Short.MAX_VALUE)
         );
         spnContenedorLayout.setVerticalGroup(
             spnContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
+            .addGap(0, 572, Short.MAX_VALUE)
         );
-
-        getContentPane().add(spnContenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 560));
 
         MenuClientes.setText("Clientes");
 
@@ -106,6 +103,17 @@ public class frmMenusVeterinaria extends javax.swing.JFrame {
         jMenuBar2.add(MenuEmpleados);
 
         setJMenuBar(jMenuBar2);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(spnContenedor)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(spnContenedor)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
