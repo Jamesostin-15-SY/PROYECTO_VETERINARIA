@@ -1,4 +1,4 @@
-package Procesos;
+package PROCESOS;
 import javax.swing.JOptionPane;
 
 
