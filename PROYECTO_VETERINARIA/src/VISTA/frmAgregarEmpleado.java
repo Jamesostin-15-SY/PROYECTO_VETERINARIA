@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package VISTA;
 
@@ -8,12 +8,10 @@ package VISTA;
  *
  * @author pc
  */
-public class frmAgregarEmpleado extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frmAgregarEmpleado.class.getName());
+public class frmAgregarEmpleado extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form AgregarEmpleado
+     * Creates new form frmAgregarEmpleados
      */
     public frmAgregarEmpleado() {
         initComponents();
@@ -29,112 +27,87 @@ public class frmAgregarEmpleado extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlContrato = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         txtDni = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         txtPrimerNombre = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         txtSegundoNombre = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         txtApellidoPaterno = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         txtApellidoMaterno = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtNumeroTelofono = new javax.swing.JTextField();
+        txtNumeroDeTelefono = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         cbxTurno = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
-        cbxPuestoLaboral = new javax.swing.JComboBox<>();
+        txtPuesto = new javax.swing.JComboBox<>();
         btnAgregarCredencial = new javax.swing.JButton();
         btnRegistrarEmpleado = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlContrato.setBackground(new java.awt.Color(0, 0, 0));
         pnlContrato.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("AGREGAR EMPLEADO");
-        pnlContrato.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 270, 30));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("AGREGAR EMPLEADO");
+        pnlContrato.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 250, 30));
 
-        jLabel2.setText("DNI");
-        pnlContrato.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 80, 30));
-        pnlContrato.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 62, 260, 50));
+        jLabel1.setText("DNI ");
+        pnlContrato.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+        pnlContrato.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 340, 60));
 
         jLabel3.setText("PRIMER NOMBRE");
-        pnlContrato.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 100, 20));
+        pnlContrato.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        pnlContrato.add(txtPrimerNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 340, 60));
 
         jLabel4.setText("SEGUNDO NOMBRE");
-        pnlContrato.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 206, 130, 20));
+        pnlContrato.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
+        pnlContrato.add(txtSegundoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 340, 60));
 
-        jLabel5.setText("APELLIDO PATERNO");
-        pnlContrato.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 150, 20));
+        jLabel5.setText("APELLIDO PATERNO ");
+        pnlContrato.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 180, 30));
+        pnlContrato.add(txtApellidoPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 340, 60));
 
         jLabel6.setText("APELLIDO MATERNO");
-        pnlContrato.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
-        pnlContrato.add(txtPrimerNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 260, 50));
-        pnlContrato.add(txtSegundoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 232, 260, 50));
-        pnlContrato.add(txtApellidoPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 320, 260, 50));
-        pnlContrato.add(txtApellidoMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 260, 50));
+        pnlContrato.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
+        pnlContrato.add(txtApellidoMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 340, 50));
 
         jLabel7.setText("NUMERO DE TELEFONO");
-        pnlContrato.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, -1, -1));
-        pnlContrato.add(txtNumeroTelofono, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 270, 50));
+        pnlContrato.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, -1, -1));
+        pnlContrato.add(txtNumeroDeTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, 320, 60));
 
         jLabel8.setText("TURNO");
-        pnlContrato.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, -1, -1));
+        pnlContrato.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, 150, 20));
 
         cbxTurno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        pnlContrato.add(cbxTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 270, 60));
+        pnlContrato.add(cbxTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 212, 320, 60));
 
         jLabel9.setText("PUESTO LABORAL");
-        pnlContrato.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, -1, -1));
+        pnlContrato.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, -1, -1));
 
-        cbxPuestoLaboral.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        pnlContrato.add(cbxPuestoLaboral, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, 270, 50));
+        txtPuesto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pnlContrato.add(txtPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 320, 60));
 
         btnAgregarCredencial.setText("AGREGAR CREDENCIAL");
-        pnlContrato.add(btnAgregarCredencial, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 300, 230, 70));
+        pnlContrato.add(btnAgregarCredencial, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, 270, 60));
 
         btnRegistrarEmpleado.setText("REGISTRAR EMPLEADO");
-        pnlContrato.add(btnRegistrarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, 230, 70));
+        pnlContrato.add(btnRegistrarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 460, 270, 60));
 
-        getContentPane().add(pnlContrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 470));
+        getContentPane().add(pnlContrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 820, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new frmAgregarEmpleado().setVisible(true));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAgregarCredencial;
     public javax.swing.JButton btnRegistrarEmpleado;
-    public javax.swing.JComboBox<String> cbxPuestoLaboral;
     public javax.swing.JComboBox<String> cbxTurno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -149,8 +122,9 @@ public class frmAgregarEmpleado extends javax.swing.JFrame {
     public javax.swing.JTextField txtApellidoMaterno;
     public javax.swing.JTextField txtApellidoPaterno;
     public javax.swing.JTextField txtDni;
-    public javax.swing.JTextField txtNumeroTelofono;
+    public javax.swing.JTextField txtNumeroDeTelefono;
     public javax.swing.JTextField txtPrimerNombre;
+    public javax.swing.JComboBox<String> txtPuesto;
     public javax.swing.JTextField txtSegundoNombre;
     // End of variables declaration//GEN-END:variables
 }
