@@ -21,8 +21,6 @@ public class VistasFactory {
             FRC.setTitle(titulo);
             PresentarVista(FRC, contenedor);
         }
-
-
         if (nomvista.equals("Tabladeempleados")){
             frmTablaDeEmpleados FTE = new frmTablaDeEmpleados();
             FTE.setTitle(titulo);
@@ -38,7 +36,6 @@ public class VistasFactory {
             FMC.setTitle(titulo);
             PresentarVista(FMC, contenedor);
         }
-       
         if (nomvista.equals("")){}
         
         if (nomvista.equals("AgregarEmpleado")) { 
@@ -46,25 +43,27 @@ public class VistasFactory {
            FE.setTitle(titulo);
            PresentarVista(FE, contenedor); 
         }
-        if (nomvista.equals("AgendaCitas")) {
-           frmAgendaDeCita FA = new frmAgendaDeCita(); // Asegúrate de que este nombre de clase coincida con tu carpeta VISTA
+       if (nomvista.equals("AgendaCitas")) {
+           frmAgendaDeCita FA = new frmAgendaDeCita();
            FA.setTitle(titulo);
            PresentarVista(FA, contenedor);
         }
-    
-        if (nomvista.equals("CancelarCita")){
+       if (nomvista.equals("CancelarCita")){
            frmCancelarCita FCC = new frmCancelarCita();
            FCC.setTitle(titulo);
            PresentarVista(FCC, contenedor);
         }
-
 
         if (nomvista.equals("AgendasAsignadas")){
             frmAgendadeCitasAsignadas FACA = new frmAgendadeCitasAsignadas();
             FACA.setTitle(titulo);
             PresentarVista(FACA, contenedor);
         }
-
+        if (nomvista.equals("AgregarEmpleado")) { 
+            frmAgregarEmpleado FE = new frmAgregarEmpleado(); 
+            ControladorEmpleado CE = new ControladorEmpleado(FE);   
+            PresentarVista(FE, contenedor); 
+       }    
     }   
-    
+   
 }
