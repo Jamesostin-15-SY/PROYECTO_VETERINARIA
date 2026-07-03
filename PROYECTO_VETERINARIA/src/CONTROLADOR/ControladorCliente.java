@@ -1,21 +1,25 @@
 package CONTROLADOR;
 import DAO.*;
 import VISTA.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import PROCESOS.*;
 import MODELO.*;
+import FACTORY.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JDesktopPane;
+import javax.swing.SwingUtilities;
 public class ControladorCliente implements ActionListener{
 
     private frmRegistrarClientes vista;
-    private ClienteDAO dao;
+    private CrudCliente dao;
 
     public ControladorCliente(frmRegistrarClientes vista) {
         this.vista = vista;
-        this.dao = new ClienteDAO();
+        this.dao = new CrudCliente();
         
         // Escuchamos el botón de la interfaz
         this.vista.btnRegistrarCliente.addActionListener(this);
+        this.vista.btnAgregarMascota.addActionListener(this);
         
         // Nos aseguramos de que el botón de mascota empiece deshabilitado al abrir la ventana
         this.vista.btnAgregarMascota.setEnabled(false);
@@ -25,6 +29,10 @@ public class ControladorCliente implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == vista.btnRegistrarCliente) {
             ejecutarRegistro();
+        }
+        
+        if (e.getSource() == vista.btnAgregarMascota) {
+            abrirVentanaMascota();
         }
     }
     private void ejecutarRegistro() {
@@ -72,6 +80,25 @@ public class ControladorCliente implements ActionListener{
         }
     }
     
+    private void abrirVentanaMascota() {
+        JDesktopPane contenedor = (JDesktopPane) SwingUtilities.getAncestorOfClass(JDesktopPane.class, vista);
+        
+        if (contenedor != null) {
+            String dniPasar = vista.txtDniClie.getText().trim();
+            vista.dispose(); 
+            
+            VistasFactory.CrearVista("AgregarMascota", "Registrar Nueva Mascota", contenedor);
+            for (javax.swing.JInternalFrame iframe : contenedor.getAllFrames()) {
+                if (iframe instanceof frmAgregarMascotas) {
+                    frmAgregarMascotas vistaMascota = (frmAgregarMascotas) iframe;
+                    vistaMascota.txtDniClie2.setText(dniPasar);
+                    vistaMascota.txtDniClie2.setEnabled(false);
+                    break;
+                }
+            }
+        }
+    }
+    
     private void bloquearCamposCliente() {
         vista.txtDniClie.setEnabled(false);
         vista.txtNombreClie.setEnabled(false);
@@ -92,8 +119,6 @@ public class ControladorCliente implements ActionListener{
         vista.txtDireccionClie.setText("");
         vista.txtTelefonoClie.setText("");
         vista.txtDniClie.requestFocus();
-    }
-    
-        
+    }  
 }
     

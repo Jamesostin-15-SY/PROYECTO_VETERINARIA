@@ -2,7 +2,7 @@ package DAO;
 import MODELO.*;
 import PROCESOS.*;
 import java.sql.*;
-public class ClienteDAO {
+public class CrudCliente {
     public boolean registrar(Clientes cliente) {
         String sql = "INSERT INTO clientes (dni_cliente, primer_nombre, segundo_nombre, " +
                      "apellido_paterno, apellido_materno, direccion, telefono) " +
@@ -33,7 +33,7 @@ public class ClienteDAO {
             int filasAfectadas = ps.executeUpdate();
             return filasAfectadas > 0;
             
-        } catch (SQLException e) {
+        } catch (Exception e) {
             Mensajes.M1("Error al registrar cliente en la BD: " + e.getMessage());
             return false;
         } finally {
@@ -41,10 +41,9 @@ public class ClienteDAO {
                 if (con != null && !con.isClosed()) {
                     con.close();
                 }
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
                 System.out.println("Error al cerrar conexión: " + ex.getMessage());
             }
         }
     }
-    
 }

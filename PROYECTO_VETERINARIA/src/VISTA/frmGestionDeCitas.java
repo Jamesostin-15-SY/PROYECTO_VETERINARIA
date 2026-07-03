@@ -43,6 +43,8 @@ public class frmGestionDeCitas extends javax.swing.JInternalFrame {
         btnGuardar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlGestionarCitas.setBackground(new java.awt.Color(255, 255, 204));
@@ -70,7 +72,7 @@ public class frmGestionDeCitas extends javax.swing.JInternalFrame {
         jLabel4.setText("Fecha");
         pnlGestionarCitas.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, -1, -1));
 
-        spnFecha.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(), new java.util.Date(1783028273279L), new java.util.Date(1783028288262L), java.util.Calendar.DAY_OF_MONTH));
+        spnFecha.setModel(new javax.swing.SpinnerDateModel());
         pnlGestionarCitas.add(spnFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, 290, 70));
 
         txaMotivoDeCita.setColumns(20);
