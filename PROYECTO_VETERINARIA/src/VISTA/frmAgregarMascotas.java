@@ -8,12 +8,12 @@ package VISTA;
  *
  * @author James
  */
-public class AgregarMascotas extends javax.swing.JInternalFrame {
+public class frmAgregarMascotas extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form AgregarMascotas
      */
-    public AgregarMascotas() {
+    public frmAgregarMascotas() {
         initComponents();
     }
 
@@ -39,6 +39,8 @@ public class AgregarMascotas extends javax.swing.JInternalFrame {
         btnAgregarCita = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setIconifiable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 0));
@@ -87,6 +89,7 @@ public class AgregarMascotas extends javax.swing.JInternalFrame {
         btnAgregarCita.setBackground(new java.awt.Color(0, 0, 51));
         btnAgregarCita.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnAgregarCita.setText("AGREGAR CITA");
+        btnAgregarCita.setEnabled(false);
         jPanel1.add(btnAgregarCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 420, 310, 70));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N

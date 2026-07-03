@@ -55,14 +55,14 @@ public class frmRegistrarClientes extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         txtDniClie.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jPanel1.add(txtDniClie, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 230, 50));
+        jPanel1.add(txtDniClie, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 270, 50));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setText("Primer nombre");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
         txtNombreClie.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jPanel1.add(txtNombreClie, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 230, 50));
+        jPanel1.add(txtNombreClie, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 270, 50));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setText("Segundo nombre");
@@ -70,55 +70,55 @@ public class frmRegistrarClientes extends javax.swing.JInternalFrame {
 
         txtSegundoNCli.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtSegundoNCli.addActionListener(this::txtSegundoNCliActionPerformed);
-        jPanel1.add(txtSegundoNCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 230, 50));
+        jPanel1.add(txtSegundoNCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 270, 50));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setText("Apellido materno");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setText("Dirección cliente");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, -1, -1));
 
         txtDireccionClie.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtDireccionClie.addActionListener(this::txtDireccionClieActionPerformed);
-        jPanel1.add(txtDireccionClie, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 230, 50));
+        jPanel1.add(txtDireccionClie, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 270, 50));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel6.setText("Apellido paterno");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
 
         txtApellidoPCli.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jPanel1.add(txtApellidoPCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 230, 50));
+        jPanel1.add(txtApellidoPCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 270, 50));
 
         txtApellidoMCli.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtApellidoMCli.addActionListener(this::txtApellidoMCliActionPerformed);
-        jPanel1.add(txtApellidoMCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 230, 50));
+        jPanel1.add(txtApellidoMCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 270, 50));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel7.setText("Telefono cliente");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, -1, -1));
 
         txtTelefonoClie.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jPanel1.add(txtTelefonoClie, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, 230, 50));
+        jPanel1.add(txtTelefonoClie, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 270, 50));
 
         btnRegistrarCliente.setBackground(new java.awt.Color(255, 51, 0));
         btnRegistrarCliente.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnRegistrarCliente.setForeground(new java.awt.Color(0, 0, 0));
         btnRegistrarCliente.setText("REGISTRAR CLIENTE");
-        jPanel1.add(btnRegistrarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 230, 50));
+        jPanel1.add(btnRegistrarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 270, 50));
 
         btnAgregarMascota.setBackground(new java.awt.Color(255, 0, 0));
         btnAgregarMascota.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnAgregarMascota.setForeground(new java.awt.Color(0, 0, 0));
         btnAgregarMascota.setText("AGREGAR MASCOTA");
-        jPanel1.add(btnAgregarMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, 230, 50));
+        jPanel1.add(btnAgregarMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 450, 270, 50));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel8.setText("Registrar Cliente");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 530));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
