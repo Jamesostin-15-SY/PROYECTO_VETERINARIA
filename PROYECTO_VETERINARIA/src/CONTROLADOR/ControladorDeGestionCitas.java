@@ -11,19 +11,18 @@ import javax.swing.JOptionPane;
 
 public class ControladorDeGestionCitas implements ActionListener{
     private final frmGestionDeCitas vista;
-    private final CrudCitas crudCitas;
-    private String nombreMascotaPreseleccionada = "";
+    private final CrudGestionDeCitas CrudCitas;
+    public static String nombreMascotaPreseleccionada = "";
     
-    private List<Object[]> listaMascotas;
     private List<Object[]> listaVeterinarios;
     private List<Object[]> listaEstados;
 
     public ControladorDeGestionCitas(frmGestionDeCitas vista) {
         this.vista = vista;
-        this.crudCitas = new CrudCitas();
+        this.CrudCitas = new CrudGestionDeCitas();
         
-
-        cargarCombos();
+        cargarCombosDesdeBD();
+        
         bloquearYPreseleccionar();
         
         this.vista.btnGuardar.addActionListener(this);
@@ -31,43 +30,36 @@ public class ControladorDeGestionCitas implements ActionListener{
         this.vista.btnSalir.addActionListener(this);
     }
 
-    private void cargarCombos() {
-    
+    private void cargarCombosDesdeBD() {
         vista.cbxNombreMascota.removeAllItems();
-        listaMascotas = crudCitas.listarMascotasCombo(); 
-        for (Object[] masc : listaMascotas) {
-            vista.cbxNombreMascota.addItem(masc[1].toString());
-        }
-
-    
-        vista.cbxVeterinario.removeAllItems();
-        listaVeterinarios = crudCitas.listarVeterinariosCombo();
-        for (Object[] vet : listaVeterinarios) {
-            vista.cbxVeterinario.addItem(vet[1].toString()); 
-        }
-
-    
-        vista.cbxEstado.removeAllItems();
-        listaEstados = crudCitas.listarEstadosCombo();
-        for (Object[] est : listaEstados) {
-            vista.cbxEstado.addItem(est[1].toString()); 
-        }
-
-    
-        vista.cbxNombreMascota.setEnabled(false);
-        vista.cbxEstado.setEnabled(false);
-    }
-    private void bloquearYPreseleccionar() {
-        
-        vista.cbxNombreMascota.setEnabled(false);
-        vista.cbxEstado.setEnabled(false);
-
-        
         if (nombreMascotaPreseleccionada != null && !nombreMascotaPreseleccionada.isEmpty()) {
-            vista.cbxNombreMascota.setSelectedItem(nombreMascotaPreseleccionada);
+            vista.cbxNombreMascota.addItem(nombreMascotaPreseleccionada);
+        } else {
+            vista.cbxNombreMascota.addItem("Sin Mascota");
         }
 
-        
+        vista.cbxVeterinario.removeAllItems();
+        listaVeterinarios = CrudCitas.listarVeterinariosCombo();
+        if (listaVeterinarios != null) {
+            for (Object[] vet : listaVeterinarios) {
+                vista.cbxVeterinario.addItem(vet[1].toString()); 
+            }
+        }
+
+        vista.cbxEstado.removeAllItems();
+        listaEstados = CrudCitas.listarEstadosCombo();
+        if (listaEstados != null) {
+            for (Object[] est : listaEstados) {
+                vista.cbxEstado.addItem(est[1].toString()); 
+            }
+        }
+    }
+
+    private void bloquearYPreseleccionar() {
+        if (vista.cbxNombreMascota.getItemCount() > 0) {
+            vista.cbxNombreMascota.setSelectedIndex(0);
+        }
+
         if (listaEstados != null) {
             for (Object[] est : listaEstados) {
                 String nombreEstado = est[1].toString();
@@ -77,6 +69,9 @@ public class ControladorDeGestionCitas implements ActionListener{
                 }
             }
         }
+
+        vista.cbxNombreMascota.setEnabled(false);
+        vista.cbxEstado.setEnabled(false);
     }
 
     @Override
@@ -99,7 +94,7 @@ public class ControladorDeGestionCitas implements ActionListener{
             vista.cbxVeterinario.getSelectedIndex() == -1 || 
             vista.cbxEstado.getSelectedIndex() == -1 || 
             motivo.isEmpty()) {
-            
+        
             JOptionPane.showMessageDialog(vista, "Por favor, complete todos los campos obligatorios.", "Campos Vacíos", JOptionPane.WARNING_MESSAGE);
             return;
         }
@@ -107,9 +102,9 @@ public class ControladorDeGestionCitas implements ActionListener{
         Date fechaSpinner = (Date) vista.spnFecha.getValue();
         LocalDateTime fechaHora = java.time.LocalDateTime.ofInstant(fechaSpinner.toInstant(), java.time.ZoneId.systemDefault());
 
-        int indexMasc = vista.cbxNombreMascota.getSelectedIndex();
-        int idMascota = (int) listaMascotas.get(indexMasc)[0];
-
+        String nomMascota = vista.cbxNombreMascota.getSelectedItem().toString();
+        int idMascota = CrudCitas.obtenerIdMascotaPorNombre(nomMascota);
+        
         int indexVet = vista.cbxVeterinario.getSelectedIndex();
         String dniVeterinario = listaVeterinarios.get(indexVet)[0].toString();
 
@@ -122,9 +117,9 @@ public class ControladorDeGestionCitas implements ActionListener{
         nuevaCita.setFecha_hora(fechaHora);
         nuevaCita.setFk_id_estado(idEstado);
         nuevaCita.setMotivo_cita(motivo);
-        nuevaCita.setFk_id_servicio(1); 
+        nuevaCita.setFk_id_servicio(1);
 
-        if (crudCitas.registrarCita(nuevaCita)) {
+        if (CrudCitas.registrarCita(nuevaCita)) {
             JOptionPane.showMessageDialog(vista, "¡Cita registrada correctamente!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             limpiarCampos();
         } else {
@@ -136,10 +131,8 @@ public class ControladorDeGestionCitas implements ActionListener{
         vista.txaMotivoDeCita.setText("");
         vista.spnFecha.setValue(new Date()); 
         
-        if (vista.cbxNombreMascota.getItemCount() > 0) vista.cbxNombreMascota.setSelectedIndex(0);
         if (vista.cbxVeterinario.getItemCount() > 0) vista.cbxVeterinario.setSelectedIndex(0);
-        if (vista.cbxEstado.getItemCount() > 0) vista.cbxEstado.setSelectedIndex(0);
+        
         bloquearYPreseleccionar();
-        if (vista.cbxVeterinario.getItemCount() > 0) vista.cbxVeterinario.setSelectedIndex(0);
     }
 }

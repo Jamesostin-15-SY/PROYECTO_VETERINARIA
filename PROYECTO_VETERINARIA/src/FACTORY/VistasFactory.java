@@ -71,8 +71,10 @@ public class VistasFactory {
         }
         if (nomvista.equals("GestionDeCitas")){
             frmGestionDeCitas FGC = new frmGestionDeCitas();
+            ControladorDeGestionCitas CDGC= new ControladorDeGestionCitas(FGC);
             FGC.setTitle(titulo);
             PresentarVista(FGC, contenedor);
         }
     }   
+    
 }

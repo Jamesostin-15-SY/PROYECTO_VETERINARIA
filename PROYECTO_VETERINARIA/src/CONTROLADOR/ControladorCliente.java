@@ -32,7 +32,22 @@ public class ControladorCliente implements ActionListener{
         }
         
         if (e.getSource() == vista.btnAgregarMascota) {
-            abrirVentanaMascota();
+            JDesktopPane contenedor = (JDesktopPane) SwingUtilities.getAncestorOfClass(JDesktopPane.class, vista);
+
+            if (contenedor != null) {
+                String dniPasar = vista.txtDniClie.getText().trim();
+                vista.dispose(); 
+            
+                VistasFactory.CrearVista("AgregarMascota", "Registrar Nueva Mascota", contenedor);
+                for (javax.swing.JInternalFrame iframe : contenedor.getAllFrames()) {
+                    if (iframe instanceof frmAgregarMascotas) {
+                        frmAgregarMascotas vistaMascota = (frmAgregarMascotas) iframe;
+                        vistaMascota.txtDniClie2.setText(dniPasar);
+                        vistaMascota.txtDniClie2.setEnabled(false);
+                        break;
+                    }
+                }
+            }
         }
     }
     private void ejecutarRegistro() {
@@ -80,24 +95,6 @@ public class ControladorCliente implements ActionListener{
         }
     }
     
-    private void abrirVentanaMascota() {
-        JDesktopPane contenedor = (JDesktopPane) SwingUtilities.getAncestorOfClass(JDesktopPane.class, vista);
-        
-        if (contenedor != null) {
-            String dniPasar = vista.txtDniClie.getText().trim();
-            vista.dispose(); 
-            
-            VistasFactory.CrearVista("AgregarMascota", "Registrar Nueva Mascota", contenedor);
-            for (javax.swing.JInternalFrame iframe : contenedor.getAllFrames()) {
-                if (iframe instanceof frmAgregarMascotas) {
-                    frmAgregarMascotas vistaMascota = (frmAgregarMascotas) iframe;
-                    vistaMascota.txtDniClie2.setText(dniPasar);
-                    vistaMascota.txtDniClie2.setEnabled(false);
-                    break;
-                }
-            }
-        }
-    }
     
     private void bloquearCamposCliente() {
         vista.txtDniClie.setEnabled(false);
