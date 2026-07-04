@@ -36,20 +36,13 @@ public class ControladorMascotas implements ActionListener{
             JDesktopPane contenedor = (JDesktopPane) SwingUtilities.getAncestorOfClass(JDesktopPane.class, vista);
             
             if (contenedor != null) {
-            String dniDueño = vista.txtDniClie2.getText().trim();
-            vista.dispose(); 
-            
-            VistasFactory.CrearVista("GestionDeCitas", "Gestion De Citas", contenedor);
-            
-            for (javax.swing.JInternalFrame iframe : contenedor.getAllFrames()) {
-                if (iframe instanceof frmAgendaDeCita) { 
-                    frmAgendaDeCita vistaCita = (frmAgendaDeCita) iframe;
-                    break;
-                }
+                String mascotaRegistrada = vista.txtNombreMascota.getText().trim();
+                ControladorDeGestionCitas.nombreMascotaPreseleccionada = mascotaRegistrada;
+                vista.dispose(); 
+                VistasFactory.CrearVista("GestionDeCitas", "Gestion De Citas", contenedor);
             }
         }
     }
-}
     
     private void cargarComboEspecies() {
         vista.cbxEspecieMascota.removeAllItems();
