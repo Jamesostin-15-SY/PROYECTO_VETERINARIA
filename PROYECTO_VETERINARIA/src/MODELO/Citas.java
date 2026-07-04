@@ -9,12 +9,12 @@ public class Citas {
     private int fk_id_servicio;
     private int fk_id_estado;
     private String motivo_cita;
-    String nombreMascotaAux;
-    String nombreVeterinarioAux;
-    String nombreServicioAux;
-    String nombreEstadoAux;
-    LocalDateTime fechaHora;
-    String motivoCita;
+    public String nombreMascotaAux;
+    public String nombreVeterinarioAux;
+    public String nombreServicioAux;
+    public String nombreEstadoAux;
+    public LocalDateTime fechaHora;
+    public String motivoCita;
     
     public Citas (){}
     
@@ -23,7 +23,7 @@ public class Citas {
     public int getFk_id_mascota() { return fk_id_mascota; }
     public void setFk_id_mascota(int fk_id_mascota) { this.fk_id_mascota = fk_id_mascota; }
     public String getveterinario() { return veterinario; }
-    public void veterinario(String veterinario) { this.veterinario = veterinario; }
+    public void setveterinario(String veterinario) { this.veterinario = veterinario; }
     public LocalDateTime getFecha_hora() { return fecha_hora; }
     public void setFecha_hora(LocalDateTime fecha_hora) { this.fecha_hora = fecha_hora; }
     public int getFk_id_servicio() { return fk_id_servicio; }

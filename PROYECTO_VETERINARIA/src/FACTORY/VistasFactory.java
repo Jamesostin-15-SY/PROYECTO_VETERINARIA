@@ -29,6 +29,7 @@ public class VistasFactory {
 
         if (nomvista.equals("AgendaCitas")) {
             frmAgendaDeCita FA = new frmAgendaDeCita();
+            ControladorAgendaDeCitas ctrlAgenda = new ControladorAgendaDeCitas(FA);
             FA.setTitle(titulo);
             PresentarVista(FA, contenedor);
         }
