@@ -29,7 +29,6 @@ public class frmGestionDeCitas extends javax.swing.JInternalFrame {
         pnlGestionarCitas = new javax.swing.JPanel();
         cbxVeterinario = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        txtMascota = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -42,6 +41,7 @@ public class frmGestionDeCitas extends javax.swing.JInternalFrame {
         btnNuevo = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        cbxNombreMascota = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -56,9 +56,6 @@ public class frmGestionDeCitas extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Informacion de Cita");
         pnlGestionarCitas.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, -1));
-
-        txtMascota.setEnabled(false);
-        pnlGestionarCitas.add(txtMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 280, 70));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Mascota");
@@ -109,6 +106,9 @@ public class frmGestionDeCitas extends javax.swing.JInternalFrame {
         btnSalir.setText("SALIR");
         pnlGestionarCitas.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 520, 210, 60));
 
+        cbxNombreMascota.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pnlGestionarCitas.add(cbxNombreMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 280, 70));
+
         getContentPane().add(pnlGestionarCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 620));
 
         pack();
@@ -120,6 +120,7 @@ public class frmGestionDeCitas extends javax.swing.JInternalFrame {
     public javax.swing.JButton btnNuevo;
     public javax.swing.JButton btnSalir;
     public javax.swing.JComboBox<String> cbxEstado;
+    public javax.swing.JComboBox<String> cbxNombreMascota;
     public javax.swing.JComboBox<String> cbxVeterinario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -131,6 +132,5 @@ public class frmGestionDeCitas extends javax.swing.JInternalFrame {
     public javax.swing.JPanel pnlGestionarCitas;
     public javax.swing.JSpinner spnFecha;
     public javax.swing.JTextArea txaMotivoDeCita;
-    public javax.swing.JTextField txtMascota;
     // End of variables declaration//GEN-END:variables
 }
