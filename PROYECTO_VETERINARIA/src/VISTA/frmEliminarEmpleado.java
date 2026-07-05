@@ -32,7 +32,7 @@ public class frmEliminarEmpleado extends javax.swing.JInternalFrame {
         txtNombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtDniEmpleado = new javax.swing.JTextField();
-        btnEliminar = new javax.swing.JButton();
+        btnDeshabilitar = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -41,8 +41,8 @@ public class frmEliminarEmpleado extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("ELIMINAR EMPLEADO");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 290, 30));
+        jLabel1.setText("  DESHABILITAR EMPLEADO");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 330, 30));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -56,11 +56,11 @@ public class frmEliminarEmpleado extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 190, -1));
         jPanel1.add(txtDniEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 510, 60));
 
-        btnEliminar.setBackground(new java.awt.Color(0, 102, 51));
-        btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(0, 0, 0));
-        btnEliminar.setText("ELIMINAR EMPLEADO");
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 510, 60));
+        btnDeshabilitar.setBackground(new java.awt.Color(0, 102, 51));
+        btnDeshabilitar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnDeshabilitar.setForeground(new java.awt.Color(0, 0, 0));
+        btnDeshabilitar.setText("DESHABILITAR EMPLEADO");
+        jPanel1.add(btnDeshabilitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 510, 60));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 580, 370));
 
@@ -69,7 +69,7 @@ public class frmEliminarEmpleado extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnEliminar;
+    public javax.swing.JButton btnDeshabilitar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
