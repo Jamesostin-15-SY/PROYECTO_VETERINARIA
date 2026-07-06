@@ -42,6 +42,8 @@ public class frmGestionDeCitas extends javax.swing.JInternalFrame {
         btnSalir = new javax.swing.JButton();
         cbxNombreMascota = new javax.swing.JComboBox<>();
         cbxEstado = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        cbxTipodeServicio = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -52,7 +54,7 @@ public class frmGestionDeCitas extends javax.swing.JInternalFrame {
 
         cbxVeterinario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         cbxVeterinario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        pnlGestionarCitas.add(cbxVeterinario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 280, 70));
+        pnlGestionarCitas.add(cbxVeterinario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 560, 70));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Informacion de Cita");
@@ -62,9 +64,9 @@ public class frmGestionDeCitas extends javax.swing.JInternalFrame {
         jLabel2.setText("Mascota");
         pnlGestionarCitas.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Veterinario");
-        pnlGestionarCitas.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
+        pnlGestionarCitas.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 100, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Fecha");
@@ -81,7 +83,7 @@ public class frmGestionDeCitas extends javax.swing.JInternalFrame {
         txaMotivoDeCita.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txaMotivoDeCita);
 
-        pnlGestionarCitas.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 690, 230));
+        pnlGestionarCitas.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 690, 230));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Estado");
@@ -89,22 +91,22 @@ public class frmGestionDeCitas extends javax.swing.JInternalFrame {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Motivo de Cita");
-        pnlGestionarCitas.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 110, -1));
+        pnlGestionarCitas.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 110, -1));
 
         btnNuevo.setBackground(new java.awt.Color(51, 204, 255));
         btnNuevo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnNuevo.setText("NUEVO");
-        pnlGestionarCitas.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 520, 190, 60));
+        pnlGestionarCitas.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 660, 190, 60));
 
         btnGuardar.setBackground(new java.awt.Color(153, 255, 153));
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnGuardar.setText("GUARDAR");
-        pnlGestionarCitas.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 520, 190, 60));
+        pnlGestionarCitas.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 660, 190, 60));
 
         btnSalir.setBackground(new java.awt.Color(255, 102, 102));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnSalir.setText("SALIR");
-        pnlGestionarCitas.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 520, 210, 60));
+        pnlGestionarCitas.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 660, 210, 60));
 
         cbxNombreMascota.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         cbxNombreMascota.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -115,7 +117,15 @@ public class frmGestionDeCitas extends javax.swing.JInternalFrame {
         cbxEstado.addActionListener(this::cbxEstadoActionPerformed);
         pnlGestionarCitas.add(cbxEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 290, 70));
 
-        getContentPane().add(pnlGestionarCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 620));
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setText("Tipo de Servicio");
+        pnlGestionarCitas.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
+
+        cbxTipodeServicio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        cbxTipodeServicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pnlGestionarCitas.add(cbxTipodeServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 280, 70));
+
+        getContentPane().add(pnlGestionarCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 740));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -131,6 +141,7 @@ public class frmGestionDeCitas extends javax.swing.JInternalFrame {
     public javax.swing.JButton btnSalir;
     public javax.swing.JComboBox<String> cbxEstado;
     public javax.swing.JComboBox<String> cbxNombreMascota;
+    public javax.swing.JComboBox<String> cbxTipodeServicio;
     public javax.swing.JComboBox<String> cbxVeterinario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -138,6 +149,7 @@ public class frmGestionDeCitas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JPanel pnlGestionarCitas;
     public javax.swing.JSpinner spnFecha;

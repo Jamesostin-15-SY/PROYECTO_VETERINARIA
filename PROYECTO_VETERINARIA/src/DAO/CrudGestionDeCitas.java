@@ -8,29 +8,28 @@ public class CrudGestionDeCitas {
     private PreparedStatement ps;
     private ResultSet rs;
 
-    public List<Object[]> listarVeterinariosCombo() {
+    
+    public List<Object[]> listarServiciosCombo() {
         List<Object[]> lista = new ArrayList<>();
-        String sql = "SELECT dni_empleado, nombre FROM empleados WHERE fk_id_puesto = (SELECT id_puesto FROM puestos WHERE nombre_puesto = 'Veterinario')"; 
-        
-        try {
-            con = conectar.getCon(); 
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-            
+    
+        String sql = "SELECT id_servicio, nombre_servicio FROM servicios ORDER BY nombre_servicio ASC";
+    
+        Conexion conAux = new Conexion();
+        Connection con = conAux.getCon();
+        if (con == null) return lista;
+    
+        try (PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
-                Object[] veterinario = new Object[2];
-                veterinario[0] = rs.getString("dni_empleado");
-                veterinario[1] = rs.getString("nombre");
-                lista.add(veterinario);
+                lista.add(new Object[]{ rs.getInt("id_servicio"), rs.getString("nombre_servicio") });
             }
         } catch (SQLException e) {
-            System.out.println("Error al listar veterinarios: " + e.toString());
+            System.out.println("Error al listar servicios: " + e.getMessage());
         } finally {
-            cerrarRecursos();
+        
         }
         return lista;
     }
-
     public List<Object[]> listarEstadosCombo() {
         List<Object[]> lista = new ArrayList<>();
         String sql = "SELECT id_estado, nombre_estado FROM estados_cita"; 
@@ -54,9 +53,45 @@ public class CrudGestionDeCitas {
         return lista;
     }
 
+    public List<Empleados> listarVeterinariosPorServicio(int idServicio) {
+            List<Empleados> lista = new ArrayList<>();
+            String sql = "SELECT e.dni_empleado, e.primer_nombre, e.apellido_paterno " +
+                 "FROM empleados_servicios es " +
+                 "INNER JOIN empleados e ON es.fk_dni_empleado = e.dni_empleado " +
+                 "WHERE es.fk_id_servicio = ?"; //
+    
+            Conexion conAux = new Conexion();
+            Connection con = conAux.getCon();
+            if (con == null) return lista;
+    
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, idServicio);
+        
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Empleados emp = new Empleados();
+                    emp.setDni_empleado(rs.getString("dni_empleado")); //
+                    emp.setPrimer_nombre(rs.getString("primer_nombre")); //
+                    emp.setApellido_paterno(rs.getString("apellido_paterno")); //
+                
+                lista.add(emp);
+            }
+        }
+    }   catch (SQLException e) {
+        System.out.println("Error al filtrar empleados: " + e.getMessage());
+    }   finally {
+            try {
+                if (con != null && !con.isClosed()) con.close();
+            }  catch (SQLException ex) {
+            System.out.println("Error al cerrar conexión: " + ex.getMessage());
+        }
+    }
+    return lista;
+}
+
     public int obtenerIdMascotaPorNombre(String nombre) {
         int idMascota = 0;
-        String sql = "SELECT id_mascota FROM mascotas WHERE nombre_mascota = ?"; // Ajusta a tu columna
+        String sql = "SELECT id_mascota FROM mascotas WHERE nombre_mascota = ?"; 
         
         try {
             con = conectar.getCon();
