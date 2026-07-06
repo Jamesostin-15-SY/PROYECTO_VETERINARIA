@@ -3,19 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package VISTA;
+import CONTROLADOR.ControladorAgendaDeCitasAsignadas; 
 
-/**
- *
- * @author user
- */
+
 public class frmAgendadeCitasAsignadas extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form frmAgendadeCitasAsignadas
-     */
     public frmAgendadeCitasAsignadas() {
         initComponents();
+        ControladorAgendaDeCitasAsignadas ctrl = new ControladorAgendaDeCitasAsignadas();
+        ctrl.cargarTabla(tblAgendaDeCitas);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
