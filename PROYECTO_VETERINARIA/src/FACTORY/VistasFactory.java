@@ -36,6 +36,7 @@ public class VistasFactory {
     
         if (nomvista.equals("Tabladeempleados")){
             frmTablaDeEmpleados FTE = new frmTablaDeEmpleados();
+            ControladorTablaDeEmpleados controlador = new ControladorTablaDeEmpleados(FTE);
             FTE.setTitle(titulo);
             PresentarVista(FTE, contenedor);
         }
