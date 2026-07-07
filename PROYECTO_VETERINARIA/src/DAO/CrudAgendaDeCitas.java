@@ -55,4 +55,41 @@ public class CrudAgendaDeCitas extends Conexion {
 
         return lista;
     }
+   public boolean existeCita(int idCita) {
+    String sql = "SELECT COUNT(*) FROM citas WHERE id_cita = ?";
+    
+    // Al usar try-with-resources, Java se encarga de abrir y cerrar TODO en orden
+    try (Connection cn = getCon(); 
+         PreparedStatement ps = cn.prepareStatement(sql)) {
+        
+        ps.setInt(1, idCita);
+        
+        try (ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                int conteo = rs.getInt(1);
+                return conteo > 0; // Si es mayor a 0, la cita existe
+            }
+        }
+    } catch (Exception e) {
+        // ¡ESTA LÍNEA ES CRUCIAL! Si hay un error de SQL o de conexión, 
+        // aparecerá en la consola de NetBeans en letras rojas.
+        System.err.println("ERROR CRÍTICO EN existeCita: " + e.getMessage());
+        e.printStackTrace(); 
+    }
+    return false;
+    }
+    public boolean actualizarEstadoCita(int idCita, int idEstado) {
+    Connection cn = getCon();
+    String sql = "UPDATE citas SET fk_id_estado = ? WHERE id_cita = ?";
+    try (PreparedStatement ps = cn.prepareStatement(sql)) {
+        ps.setInt(1, idEstado);
+        ps.setInt(2, idCita);
+        
+        int filasAfectadas = ps.executeUpdate();
+        return filasAfectadas > 0;
+    } catch (Exception e) {
+        System.out.println("Error al actualizar el estado de la cita: " + e);
+        return false;
+    }
+  }
 }
