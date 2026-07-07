@@ -61,6 +61,7 @@ public class VistasFactory {
 
         if (nomvista.equals("AgendasAsignadas")){
             frmAgendadeCitasAsignadas FACA = new frmAgendadeCitasAsignadas();
+            ControladorAgendaDeCitasAsignadas controlador = new ControladorAgendaDeCitasAsignadas(FACA);
             FACA.setTitle(titulo);
             PresentarVista(FACA, contenedor);
         }
