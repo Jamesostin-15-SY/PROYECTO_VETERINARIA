@@ -58,12 +58,6 @@ public class VistasFactory {
             FE.setTitle(titulo);
             PresentarVista(FE, contenedor); 
             }
-    
-        if (nomvista.equals("CancelarCita")){
-            frmCancelarCita FCC = new frmCancelarCita();
-            FCC.setTitle(titulo);
-            PresentarVista(FCC, contenedor);
-        }
 
         if (nomvista.equals("AgendasAsignadas")){
             frmAgendadeCitasAsignadas FACA = new frmAgendadeCitasAsignadas();
