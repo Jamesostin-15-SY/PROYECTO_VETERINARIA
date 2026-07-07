@@ -42,7 +42,7 @@ public class frmEliminarEmpleado extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("  DESHABILITAR EMPLEADO");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 330, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 330, 30));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -62,7 +62,7 @@ public class frmEliminarEmpleado extends javax.swing.JInternalFrame {
         btnDeshabilitar.setText("DESHABILITAR EMPLEADO");
         jPanel1.add(btnDeshabilitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 510, 60));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 580, 370));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 580, 380));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

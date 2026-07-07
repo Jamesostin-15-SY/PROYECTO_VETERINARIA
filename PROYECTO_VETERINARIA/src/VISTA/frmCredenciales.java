@@ -49,20 +49,20 @@ public class frmCredenciales extends javax.swing.JDialog {
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel1.setText("INGRESE TUS CREDENCIALES");
+        jLabel1.setText("INGRESE LOS CREDENCIALES");
         pnlCredenciales.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 290, 30));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("USUARIO");
         pnlCredenciales.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 160, 30));
-        pnlCredenciales.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 320, 60));
+        pnlCredenciales.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 350, 60));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("CONTRASEÑA");
         pnlCredenciales.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
-        pnlCredenciales.add(jpdContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 320, 60));
+        pnlCredenciales.add(jpdContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 350, 60));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -70,19 +70,19 @@ public class frmCredenciales extends javax.swing.JDialog {
         pnlCredenciales.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 70, -1));
 
         cbxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        pnlCredenciales.add(cbxRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 320, 60));
+        pnlCredenciales.add(cbxRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 350, 60));
 
         btnComfirmar.setBackground(new java.awt.Color(0, 51, 255));
         btnComfirmar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnComfirmar.setForeground(new java.awt.Color(0, 0, 0));
         btnComfirmar.setText("COMFIRMAR");
-        pnlCredenciales.add(btnComfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 150, 50));
+        pnlCredenciales.add(btnComfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 170, 50));
 
         btnCancelar.setBackground(new java.awt.Color(255, 102, 102));
         btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar.setText("CANCELAR");
-        pnlCredenciales.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, 150, 50));
+        pnlCredenciales.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, 170, 50));
 
         getContentPane().add(pnlCredenciales, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 450));
 

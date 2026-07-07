@@ -64,11 +64,13 @@ public class frmLogin extends javax.swing.JFrame {
 
         btnIngresar.setBackground(new java.awt.Color(0, 51, 0));
         btnIngresar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
         btnIngresar.setText("INGRESAR");
         jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 220, 50));
 
         btnSalir.setBackground(new java.awt.Color(102, 0, 0));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
         btnSalir.setText("SALIR");
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 220, 50));
 
