@@ -72,7 +72,7 @@ public class frmModificar extends javax.swing.JInternalFrame {
                             .addComponent(jLabel2)
                             .addComponent(cbxEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE))))
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         pnlModificadorLayout.setVerticalGroup(
             pnlModificadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,7 +92,7 @@ public class frmModificar extends javax.swing.JInternalFrame {
                 .addContainerGap(72, Short.MAX_VALUE))
         );
 
-        getContentPane().add(pnlModificador, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -30, 460, 530));
+        getContentPane().add(pnlModificador, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -30, 380, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
