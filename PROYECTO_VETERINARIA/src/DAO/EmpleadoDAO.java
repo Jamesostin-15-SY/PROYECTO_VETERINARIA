@@ -2,6 +2,9 @@ package DAO;
 import MODELO.*;
 import PROCESOS.*;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class EmpleadoDAO {
     // Inserta el empleado en la tabla 'empleados'
     public boolean registrar(Empleados empleado) {
@@ -38,7 +41,8 @@ public class EmpleadoDAO {
             }
         }
     }
-    // Inserta la credencial en 'usuarios_credenciales' (se llama DESPUÉS de registrar())
+
+    // Inserta la credencial en 'usuarios_credenciales' 
     public boolean registrarCredencial(UsuariosCredenciales credencial) {
         String sql = "INSERT INTO usuarios_credenciales (fk_dni_empleado, usuario, contrasena, fk_id_role) " +
                      "VALUES (?, ?, ?, ?)";
@@ -77,23 +81,86 @@ public class EmpleadoDAO {
             return false;
         }
         try (PreparedStatement ps = con.prepareStatement(sql)) {
-        ps.setString(1, usuario);
-        try (ResultSet rs = ps.executeQuery()) {
-        if (rs.next()) {
-         return rs.getInt(1) > 0;
-        }
-     }
+            ps.setString(1, usuario);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
         } catch (SQLException e) {
             Mensajes.M1("Error al verificar usuario: " + e.getMessage());
         } finally {
-          try {
-          if (con != null && !con.isClosed()) {
-              con.close();
+            try {
+                if (con != null && !con.isClosed()) {
+                    con.close();
                 }
             } catch (SQLException ex) {
                 System.out.println("Error al cerrar conexión: " + ex.getMessage());
             }
         }
         return false;
+    }
+
+    // NUEVO: trae todas las labores/servicios registrados (para llenar el JList)
+    public List<Servicios> listarTodosServicios() {
+        List<Servicios> lista = new ArrayList<>();
+        String sql = "SELECT id_servicio, nombre_servicio FROM servicios ORDER BY id_servicio";
+
+        Conexion conexionAux = new Conexion();
+        Connection con = conexionAux.getCon();
+        if (con == null) {
+            return lista;
+        }
+
+        try (PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                Servicios s = new Servicios();
+                s.setId_servicio(rs.getInt("id_servicio"));
+                s.setNombre_servicio(rs.getString("nombre_servicio"));
+                lista.add(s);
+            }
+        } catch (SQLException e) {
+            Mensajes.M1("Error al listar servicios: " + e.getMessage());
+        } finally {
+            try {
+                if (con != null && !con.isClosed()) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error al cerrar conexión: " + ex.getMessage());
+            }
+        }
+        return lista;
+    }
+
+    // NUEVO: inserta UNA fila en la tabla intermedia empleados_servicios (relación N:N)
+    public boolean asignarServicio(String dniEmpleado, int idServicio) {
+        String sql = "INSERT INTO empleados_servicios (fk_dni_empleado, fk_id_servicio) VALUES (?, ?)";
+
+        Conexion conexionAux = new Conexion();
+        Connection con = conexionAux.getCon();
+        if (con == null) {
+            return false;
+        }
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, dniEmpleado);
+            ps.setInt(2, idServicio);
+            int filas = ps.executeUpdate();
+            return filas > 0;
+        } catch (SQLException e) {
+            Mensajes.M1("Error al asignar servicio al empleado: " + e.getMessage());
+            return false;
+        } finally {
+            try {
+                if (con != null && !con.isClosed()) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error al cerrar conexión: " + ex.getMessage());
+            }
+        }
     }
 }

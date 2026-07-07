@@ -46,6 +46,8 @@ public class frmAgregarEmpleado extends javax.swing.JInternalFrame {
         txtPuesto = new javax.swing.JComboBox<>();
         btnAgregarCredencial = new javax.swing.JButton();
         btnRegistrarEmpleado = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstServicios = new javax.swing.JList<>();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -58,48 +60,57 @@ public class frmAgregarEmpleado extends javax.swing.JInternalFrame {
         pnlContrato.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 250, 30));
 
         jLabel1.setText("DNI ");
-        pnlContrato.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
-        pnlContrato.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 340, 60));
+        pnlContrato.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+        pnlContrato.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 340, 60));
 
         jLabel3.setText("PRIMER NOMBRE");
-        pnlContrato.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
-        pnlContrato.add(txtPrimerNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 340, 60));
+        pnlContrato.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+        pnlContrato.add(txtPrimerNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 340, 60));
 
         jLabel4.setText("SEGUNDO NOMBRE");
-        pnlContrato.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
-        pnlContrato.add(txtSegundoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 340, 60));
+        pnlContrato.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+        pnlContrato.add(txtSegundoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 340, 60));
 
         jLabel5.setText("APELLIDO PATERNO ");
-        pnlContrato.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 180, 30));
-        pnlContrato.add(txtApellidoPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 340, 60));
+        pnlContrato.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 180, 30));
+        pnlContrato.add(txtApellidoPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 340, 60));
 
         jLabel6.setText("APELLIDO MATERNO");
-        pnlContrato.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
-        pnlContrato.add(txtApellidoMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 340, 50));
+        pnlContrato.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, -1, -1));
+        pnlContrato.add(txtApellidoMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 340, 60));
 
         jLabel7.setText("NUMERO DE TELEFONO");
         pnlContrato.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, -1, -1));
-        pnlContrato.add(txtNumeroDeTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, 320, 60));
+        pnlContrato.add(txtNumeroDeTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, 320, 60));
 
         jLabel8.setText("TURNO");
-        pnlContrato.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, 150, 20));
+        pnlContrato.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, 150, 20));
 
         cbxTurno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        pnlContrato.add(cbxTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 212, 320, 60));
+        pnlContrato.add(cbxTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 320, 60));
 
         jLabel9.setText("PUESTO LABORAL");
-        pnlContrato.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, -1, -1));
+        pnlContrato.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, -1, -1));
 
         txtPuesto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        pnlContrato.add(txtPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 320, 60));
+        pnlContrato.add(txtPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, 320, 60));
 
         btnAgregarCredencial.setText("AGREGAR CREDENCIAL");
-        pnlContrato.add(btnAgregarCredencial, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, 270, 60));
+        pnlContrato.add(btnAgregarCredencial, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 470, 270, 50));
 
         btnRegistrarEmpleado.setText("REGISTRAR EMPLEADO");
-        pnlContrato.add(btnRegistrarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 460, 270, 60));
+        pnlContrato.add(btnRegistrarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 530, 270, 50));
 
-        getContentPane().add(pnlContrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 820, 540));
+        lstServicios.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(lstServicios);
+
+        pnlContrato.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 360, 320, 100));
+
+        getContentPane().add(pnlContrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 830, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -118,6 +129,8 @@ public class frmAgregarEmpleado extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JList<String> lstServicios;
     public javax.swing.JPanel pnlContrato;
     public javax.swing.JTextField txtApellidoMaterno;
     public javax.swing.JTextField txtApellidoPaterno;
