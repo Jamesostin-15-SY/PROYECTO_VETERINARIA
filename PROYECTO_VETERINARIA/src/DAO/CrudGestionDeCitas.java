@@ -1,44 +1,48 @@
 package DAO;
+
 import java.util.*;
 import java.sql.*;
 import MODELO.*;
+
 public class CrudGestionDeCitas {
-    private final Conexion conectar = new Conexion(); 
+
+    private final Conexion conectar = new Conexion();
     private Connection con;
     private PreparedStatement ps;
     private ResultSet rs;
 
-    
     public List<Object[]> listarServiciosCombo() {
         List<Object[]> lista = new ArrayList<>();
-    
+
         String sql = "SELECT id_servicio, nombre_servicio FROM servicios ORDER BY nombre_servicio ASC";
-    
+
         Conexion conAux = new Conexion();
         Connection con = conAux.getCon();
-        if (con == null) return lista;
-    
-        try (PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery()) {
+        if (con == null) {
+            return lista;
+        }
+
+        try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
-                lista.add(new Object[]{ rs.getInt("id_servicio"), rs.getString("nombre_servicio") });
+                lista.add(new Object[]{rs.getInt("id_servicio"), rs.getString("nombre_servicio")});
             }
         } catch (SQLException e) {
             System.out.println("Error al listar servicios: " + e.getMessage());
         } finally {
-        
+
         }
         return lista;
     }
+
     public List<Object[]> listarEstadosCombo() {
         List<Object[]> lista = new ArrayList<>();
-        String sql = "SELECT id_estado, nombre_estado FROM estados_cita"; 
-        
+        String sql = "SELECT id_estado, nombre_estado FROM estados_cita";
+
         try {
             con = conectar.getCon();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
-            
+
             while (rs.next()) {
                 Object[] estado = new Object[2];
                 estado[0] = rs.getInt("id_estado");
@@ -54,51 +58,55 @@ public class CrudGestionDeCitas {
     }
 
     public List<Empleados> listarVeterinariosPorServicio(int idServicio) {
-            List<Empleados> lista = new ArrayList<>();
-            String sql = "SELECT e.dni_empleado, e.primer_nombre, e.apellido_paterno " +
-                 "FROM empleados_servicios es " +
-                 "INNER JOIN empleados e ON es.fk_dni_empleado = e.dni_empleado " +
-                 "WHERE es.fk_id_servicio = ?"; //
-    
-            Conexion conAux = new Conexion();
-            Connection con = conAux.getCon();
-            if (con == null) return lista;
-    
-            try (PreparedStatement ps = con.prepareStatement(sql)) {
+        List<Empleados> lista = new ArrayList<>();
+        String sql = "SELECT e.dni_empleado, e.primer_nombre, e.apellido_paterno "+
+                     "FROM empleados_servicios es "+
+                     "INNER JOIN empleados e ON es.fk_dni_empleado = e.dni_empleado "+
+                     "WHERE es.fk_id_servicio = ?";
+
+        Conexion conAux = new Conexion();
+        Connection con = conAux.getCon();
+        if (con == null) {
+            return lista;
+        }
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, idServicio);
-        
+
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     Empleados emp = new Empleados();
-                    emp.setDni_empleado(rs.getString("dni_empleado")); //
-                    emp.setPrimer_nombre(rs.getString("primer_nombre")); //
-                    emp.setApellido_paterno(rs.getString("apellido_paterno")); //
-                
-                lista.add(emp);
+                    emp.setDni_empleado(rs.getString("dni_empleado"));
+                    emp.setPrimer_nombre(rs.getString("primer_nombre"));
+                    emp.setApellido_paterno(rs.getString("apellido_paterno"));
+
+                    lista.add(emp);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al filtrar empleados: " + e.getMessage());
+        } finally {
+            try {
+                if (con != null && !con.isClosed()) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error al cerrar conexión: " + ex.getMessage());
             }
         }
-    }   catch (SQLException e) {
-        System.out.println("Error al filtrar empleados: " + e.getMessage());
-    }   finally {
-            try {
-                if (con != null && !con.isClosed()) con.close();
-            }  catch (SQLException ex) {
-            System.out.println("Error al cerrar conexión: " + ex.getMessage());
-        }
+        return lista;
     }
-    return lista;
-}
 
     public int obtenerIdMascotaPorNombre(String nombre) {
         int idMascota = 0;
-        String sql = "SELECT id_mascota FROM mascotas WHERE nombre_mascota = ?"; 
-        
+        String sql = "SELECT id_mascota FROM mascotas WHERE nombre_mascota = ?";
+
         try {
             con = conectar.getCon();
             ps = con.prepareStatement(sql);
             ps.setString(1, nombre);
             rs = ps.executeQuery();
-            
+
             if (rs.next()) {
                 idMascota = rs.getInt("id_mascota");
             }
@@ -112,23 +120,23 @@ public class CrudGestionDeCitas {
 
     public boolean registrarCita(Citas cita) {
         String sql = "INSERT INTO citas (fk_id_mascota, fk_dni_veterinario, fecha_hora, fk_id_estado, motivo_cita, fk_id_servicio) VALUES (?, ?, ?, ?, ?, ?)";
-        
+
         try {
             con = conectar.getCon();
             ps = con.prepareStatement(sql);
-            
+
             ps.setInt(1, cita.getFk_id_mascota());
             ps.setString(2, cita.getveterinario());
-            
+
             ps.setTimestamp(3, Timestamp.valueOf(cita.getFecha_hora()));
-            
+
             ps.setInt(4, cita.getFk_id_estado());
             ps.setString(5, cita.getMotivo_cita());
             ps.setInt(6, cita.getFk_id_servicio());
-            
+
             int resultado = ps.executeUpdate();
             return resultado > 0;
-            
+
         } catch (SQLException e) {
             System.out.println("Error al registrar la cita: " + e.toString());
             return false;
@@ -136,11 +144,15 @@ public class CrudGestionDeCitas {
             cerrarRecursos();
         }
     }
-    
+
     private void cerrarRecursos() {
         try {
-            if (rs != null) rs.close();
-            if (ps != null) ps.close();
+            if (rs != null) {
+                rs.close();
+            }
+            if (ps != null) {
+                ps.close();
+            }
         } catch (SQLException e) {
             System.out.println("Error al cerrar recursos: " + e.toString());
         }

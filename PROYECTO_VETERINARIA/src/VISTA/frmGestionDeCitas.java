@@ -54,7 +54,7 @@ public class frmGestionDeCitas extends javax.swing.JInternalFrame {
 
         cbxVeterinario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         cbxVeterinario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        pnlGestionarCitas.add(cbxVeterinario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 560, 70));
+        pnlGestionarCitas.add(cbxVeterinario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 560, 70));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Informacion de Cita");
@@ -66,7 +66,7 @@ public class frmGestionDeCitas extends javax.swing.JInternalFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Veterinario");
-        pnlGestionarCitas.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 100, 30));
+        pnlGestionarCitas.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 100, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Fecha");
@@ -83,7 +83,7 @@ public class frmGestionDeCitas extends javax.swing.JInternalFrame {
         txaMotivoDeCita.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txaMotivoDeCita);
 
-        pnlGestionarCitas.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 690, 230));
+        pnlGestionarCitas.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 690, 150));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Estado");
@@ -91,22 +91,22 @@ public class frmGestionDeCitas extends javax.swing.JInternalFrame {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Motivo de Cita");
-        pnlGestionarCitas.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 110, -1));
+        pnlGestionarCitas.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 110, -1));
 
         btnNuevo.setBackground(new java.awt.Color(51, 204, 255));
         btnNuevo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnNuevo.setText("NUEVO");
-        pnlGestionarCitas.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 660, 190, 60));
+        pnlGestionarCitas.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, 190, 60));
 
         btnGuardar.setBackground(new java.awt.Color(153, 255, 153));
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnGuardar.setText("GUARDAR");
-        pnlGestionarCitas.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 660, 190, 60));
+        pnlGestionarCitas.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 530, 190, 60));
 
         btnSalir.setBackground(new java.awt.Color(255, 102, 102));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnSalir.setText("SALIR");
-        pnlGestionarCitas.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 660, 210, 60));
+        pnlGestionarCitas.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 530, 210, 60));
 
         cbxNombreMascota.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         cbxNombreMascota.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -125,7 +125,7 @@ public class frmGestionDeCitas extends javax.swing.JInternalFrame {
         cbxTipodeServicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         pnlGestionarCitas.add(cbxTipodeServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 280, 70));
 
-        getContentPane().add(pnlGestionarCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 740));
+        getContentPane().add(pnlGestionarCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 620));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

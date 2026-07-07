@@ -9,6 +9,8 @@ public class Citas {
     private int fk_id_servicio;
     private int fk_id_estado;
     private String motivo_cita;
+    
+    //Auxiliares//
     public String nombreMascotaAux;
     public String nombreVeterinarioAux;
     public String nombreServicioAux;
