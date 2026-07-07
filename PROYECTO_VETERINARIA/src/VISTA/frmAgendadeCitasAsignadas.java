@@ -10,8 +10,6 @@ public class frmAgendadeCitasAsignadas extends javax.swing.JInternalFrame {
 
     public frmAgendadeCitasAsignadas() {
         initComponents();
-        ControladorAgendaDeCitasAsignadas ctrl = new ControladorAgendaDeCitasAsignadas();
-        ctrl.cargarTabla(tblAgendaDeCitas);
     }
 
 
@@ -30,7 +28,7 @@ public class frmAgendadeCitasAsignadas extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        cdxEstadoCita = new javax.swing.JComboBox<>();
+        cbxEstadoCita = new javax.swing.JComboBox<>();
         txtIdCita = new javax.swing.JTextField();
         btnConfirmar = new javax.swing.JButton();
 
@@ -67,8 +65,8 @@ public class frmAgendadeCitasAsignadas extends javax.swing.JInternalFrame {
         jLabel3.setText("ESTADO DE LA CITA");
         pnlCitasAsignadas.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 400, -1, -1));
 
-        cdxEstadoCita.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        pnlCitasAsignadas.add(cdxEstadoCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, 480, 60));
+        cbxEstadoCita.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pnlCitasAsignadas.add(cbxEstadoCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, 480, 60));
         pnlCitasAsignadas.add(txtIdCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 460, 60));
 
         btnConfirmar.setBackground(new java.awt.Color(255, 255, 102));
@@ -84,7 +82,7 @@ public class frmAgendadeCitasAsignadas extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnConfirmar;
-    public javax.swing.JComboBox<String> cdxEstadoCita;
+    public javax.swing.JComboBox<String> cbxEstadoCita;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
