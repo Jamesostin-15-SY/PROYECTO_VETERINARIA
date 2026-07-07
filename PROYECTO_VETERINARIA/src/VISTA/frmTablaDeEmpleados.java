@@ -29,6 +29,12 @@ public class frmTablaDeEmpleados extends javax.swing.JInternalFrame {
         pnlEmpleados = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRegistrosEmpleados = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        cbxEstadoEmpleado = new javax.swing.JComboBox<>();
+        txtDniEmpleado = new javax.swing.JTextField();
+        btnConfirmar = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -49,17 +55,49 @@ public class frmTablaDeEmpleados extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblRegistrosEmpleados);
 
-        pnlEmpleados.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 990, 560));
+        pnlEmpleados.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1010, 320));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setText("DESHABILITAR EMPLEADO");
+        pnlEmpleados.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setText("DNI");
+        pnlEmpleados.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setText("ESTADO DEL EMPLEADO");
+        pnlEmpleados.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 370, -1, -1));
+
+        cbxEstadoEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pnlEmpleados.add(cbxEstadoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 390, 490, 50));
+        pnlEmpleados.add(txtDniEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 420, 50));
+
+        btnConfirmar.setBackground(new java.awt.Color(51, 204, 255));
+        btnConfirmar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnConfirmar.setText("CONFIRMAR");
+        btnConfirmar.addActionListener(this::btnConfirmarActionPerformed);
+        pnlEmpleados.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 480, 430, 80));
 
         getContentPane().add(pnlEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 590));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConfirmarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnConfirmar;
+    public javax.swing.JComboBox<String> cbxEstadoEmpleado;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JPanel pnlEmpleados;
     public javax.swing.JTable tblRegistrosEmpleados;
+    public javax.swing.JTextField txtDniEmpleado;
     // End of variables declaration//GEN-END:variables
 }

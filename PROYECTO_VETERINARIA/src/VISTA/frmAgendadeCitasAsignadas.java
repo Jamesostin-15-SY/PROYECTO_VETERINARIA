@@ -27,6 +27,12 @@ public class frmAgendadeCitasAsignadas extends javax.swing.JInternalFrame {
         pnlCitasAsignadas = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAgendaDeCitas = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        cdxEstadoCita = new javax.swing.JComboBox<>();
+        txtIdCita = new javax.swing.JTextField();
+        btnConfirmar = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -47,7 +53,28 @@ public class frmAgendadeCitasAsignadas extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblAgendaDeCitas);
 
-        pnlCitasAsignadas.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 990, 570));
+        pnlCitasAsignadas.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 990, 350));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("MODIFICAR ESTADO DE LAS CITAS");
+        pnlCitasAsignadas.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, -1, 20));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("ID CITA");
+        pnlCitasAsignadas.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setText("ESTADO DE LA CITA");
+        pnlCitasAsignadas.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 400, -1, -1));
+
+        cdxEstadoCita.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pnlCitasAsignadas.add(cdxEstadoCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, 480, 60));
+        pnlCitasAsignadas.add(txtIdCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 460, 60));
+
+        btnConfirmar.setBackground(new java.awt.Color(255, 255, 102));
+        btnConfirmar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnConfirmar.setText("CONFIRMAR");
+        pnlCitasAsignadas.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 510, 470, 70));
 
         getContentPane().add(pnlCitasAsignadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 600));
 
@@ -56,8 +83,14 @@ public class frmAgendadeCitasAsignadas extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnConfirmar;
+    public javax.swing.JComboBox<String> cdxEstadoCita;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JPanel pnlCitasAsignadas;
     public javax.swing.JTable tblAgendaDeCitas;
+    public javax.swing.JTextField txtIdCita;
     // End of variables declaration//GEN-END:variables
 }

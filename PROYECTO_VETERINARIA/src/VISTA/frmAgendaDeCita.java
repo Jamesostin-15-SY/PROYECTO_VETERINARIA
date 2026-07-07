@@ -29,10 +29,17 @@ public class frmAgendaDeCita extends javax.swing.JInternalFrame {
         pnlAgendaCitas = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCitas = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtCita = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        cbxEstado = new javax.swing.JComboBox<>();
+        btnCancelarCita = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlAgendaCitas.setBackground(new java.awt.Color(0, 0, 255));
+        pnlAgendaCitas.setForeground(new java.awt.Color(204, 255, 0));
         pnlAgendaCitas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblCitas.setBackground(new java.awt.Color(204, 204, 204));
@@ -49,7 +56,34 @@ public class frmAgendaDeCita extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblCitas);
 
-        pnlAgendaCitas.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1000, 540));
+        pnlAgendaCitas.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1000, 330));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 255, 0));
+        jLabel1.setText("CANCELAR CITA");
+        pnlAgendaCitas.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 255, 0));
+        jLabel2.setText("ID CITA");
+        pnlAgendaCitas.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
+
+        txtCita.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        pnlAgendaCitas.add(txtCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 400, 30));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 255, 0));
+        jLabel3.setText("ESTADO");
+        pnlAgendaCitas.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, -1, -1));
+
+        cbxEstado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        cbxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pnlAgendaCitas.add(cbxEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 410, 440, 30));
+
+        btnCancelarCita.setBackground(new java.awt.Color(153, 153, 255));
+        btnCancelarCita.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnCancelarCita.setText("CONFIRMAR");
+        pnlAgendaCitas.add(btnCancelarCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 470, 510, 60));
 
         getContentPane().add(pnlAgendaCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 570));
 
@@ -58,8 +92,14 @@ public class frmAgendaDeCita extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnCancelarCita;
+    public javax.swing.JComboBox<String> cbxEstado;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JPanel pnlAgendaCitas;
     public javax.swing.JTable tblCitas;
+    public javax.swing.JTextField txtCita;
     // End of variables declaration//GEN-END:variables
 }
