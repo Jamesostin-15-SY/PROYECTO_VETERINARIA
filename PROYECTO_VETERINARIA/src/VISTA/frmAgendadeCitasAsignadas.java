@@ -10,11 +10,8 @@ public class frmAgendadeCitasAsignadas extends javax.swing.JInternalFrame {
 
     public frmAgendadeCitasAsignadas() {
         initComponents();
-        ControladorAgendaDeCitasAsignadas ctrl = new ControladorAgendaDeCitasAsignadas();
-        ctrl.cargarTabla(tblAgendaDeCitas);
     }
-
-
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,14 +44,74 @@ public class frmAgendadeCitasAsignadas extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblAgendaDeCitas);
 
-        pnlCitasAsignadas.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 990, 570));
+        pnlCitasAsignadas.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 990, 560));
 
         getContentPane().add(pnlCitasAsignadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void initComponents() {
 
+        pnlCitasAsignadas = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblAgendaDeCitas = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        cbxEstadoCita = new javax.swing.JComboBox<>();
+        txtIdCita = new javax.swing.JTextField();
+        btnConfirmar = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlCitasAsignadas.setBackground(new java.awt.Color(0, 255, 51));
+        pnlCitasAsignadas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tblAgendaDeCitas.setBackground(new java.awt.Color(0, 153, 0));
+        tblAgendaDeCitas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "", "", "", "", "", "", ""
+            }
+        ));
+        jScrollPane1.setViewportView(tblAgendaDeCitas);
+
+        pnlCitasAsignadas.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 990, 350));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("MODIFICAR ESTADO DE LAS CITAS");
+        pnlCitasAsignadas.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, -1, 20));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("ID CITA");
+        pnlCitasAsignadas.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setText("ESTADO DE LA CITA");
+        pnlCitasAsignadas.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 400, -1, -1));
+
+        cbxEstadoCita.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pnlCitasAsignadas.add(cbxEstadoCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, 480, 60));
+        pnlCitasAsignadas.add(txtIdCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 460, 60));
+
+        btnConfirmar.setBackground(new java.awt.Color(255, 255, 102));
+        btnConfirmar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnConfirmar.setText("CONFIRMAR");
+        pnlCitasAsignadas.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 510, 470, 70));
+
+        getContentPane().add(pnlCitasAsignadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 600));
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JPanel pnlCitasAsignadas;

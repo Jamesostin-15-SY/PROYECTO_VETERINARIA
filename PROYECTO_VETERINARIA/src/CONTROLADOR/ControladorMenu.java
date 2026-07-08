@@ -19,14 +19,12 @@ public class ControladorMenu implements ActionListener {
         vistaMenu.itemRegistrarCli.addActionListener(this);
 
         vistaMenu.itemTabla.addActionListener(this);
-        vistaMenu.itemEliminar.addActionListener(this);
-        vistaMenu.itemEstado.addActionListener(this);
         
 
         vistaMenu.itemAgregar.addActionListener(this);
         vistaMenu.itemAgenda.addActionListener(this);
-        vistaMenu.itemCancelar.addActionListener(this);
         vistaMenu.itemCitas.addActionListener(this);
+        vistaMenu.itemMantenimiento.addActionListener(this);
 
     }
         
@@ -49,24 +47,18 @@ public class ControladorMenu implements ActionListener {
         }
         if (e.getSource() == vistaMenu.itemTabla){
             VistasFactory.CrearVista("Tabladeempleados", "Tabla De Empleados", vistaMenu.spnContenedor);
-        }
-        if (e.getSource() == vistaMenu.itemEliminar){
-            VistasFactory.CrearVista("EliminarEmpleado", "Eliminar Empleado", vistaMenu.spnContenedor);
-        }
-        if (e.getSource() == vistaMenu.itemEstado){
-            VistasFactory.CrearVista("Modificar", "Modificador", vistaMenu.spnContenedor);
-        }
+        }        
         if (e.getSource() == vistaMenu.itemAgregar) {
             VistasFactory.CrearVista("AgregarEmpleado", "Agregar Nuevo Empleado", vistaMenu.spnContenedor);
         }
         if (e.getSource() == vistaMenu.itemAgenda) {
             VistasFactory.CrearVista("AgendaCitas", "Agenda de Citas", vistaMenu.spnContenedor);
         }
-        if (e.getSource() == vistaMenu.itemCancelar) {
-        VistasFactory.CrearVista("CancelarCita", "Cancelar Cita", vistaMenu.spnContenedor);
-        }
         if (e.getSource() == vistaMenu.itemCitas) {
         VistasFactory.CrearVista("AgendasAsignadas", "Agenda de Citas Asignadas", vistaMenu.spnContenedor);
+        }
+        if (e.getSource() == vistaMenu.itemMantenimiento) {
+            VistasFactory.CrearVista("Servicios", "Mantenimiendo de Servicios", vistaMenu.spnContenedor);
         }
     }
 }
