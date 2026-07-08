@@ -16,7 +16,7 @@ public class CrudTablaDeEmpleados extends Conexion {
                 + "CONCAT(e.primer_nombre, ' ', COALESCE(e.segundo_nombre, '')) AS nombres, "
                 + "CONCAT(e.apellido_paterno, ' ', e.apellido_materno) AS apellidos, "
                 + "e.telefono, p.nombre_puesto, t.nombre_turno, est.nombre_estado, "
-                + "COALESCE(GROUP_CONCAT(s.nombre_servicio SEPARATOR ', '), 'Sin Servicio Asignado') AS servicios "
+                + "COALESCE(GROUP_CONCAT(s.nombre_servicio SEPARATOR ', '), p.nombre_puesto) AS servicios "
                 + "FROM empleados e "
                 + "INNER JOIN puestos p ON e.fk_id_puesto = p.id_puesto "
                 + "INNER JOIN turnos t ON e.fk_id_turno = t.id_turno "
