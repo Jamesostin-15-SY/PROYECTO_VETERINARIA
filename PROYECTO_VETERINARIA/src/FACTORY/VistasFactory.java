@@ -40,18 +40,7 @@ public class VistasFactory {
             FTE.setTitle(titulo);
             PresentarVista(FTE, contenedor);
         }
-    
-        if (nomvista.equals("EliminarEmpleado")){
-            frmEliminarEmpleado FEE = new frmEliminarEmpleado();
-            FEE.setTitle(titulo);
-            PresentarVista(FEE, contenedor);
-        }
-    
-        if (nomvista.equals("Modificar")){
-            frmModificar FMC = new frmModificar();
-            FMC.setTitle(titulo);
-            PresentarVista(FMC, contenedor);
-        }        
+        
         if (nomvista.equals("AgregarEmpleado")) { 
             frmAgregarEmpleado FE = new frmAgregarEmpleado(); 
             ControladorEmpleado CE = new ControladorEmpleado(FE);   
@@ -70,6 +59,11 @@ public class VistasFactory {
             ControladorDeGestionCitas CDGC= new ControladorDeGestionCitas(FGC);
             FGC.setTitle(titulo);
             PresentarVista(FGC, contenedor);
+        }
+        if (nomvista.equals("Servicios")){
+            frmAgregarServicio FAS = new frmAgregarServicio();
+            FAS.setTitle(titulo);
+            PresentarVista(FAS, contenedor);
         }
     }   
     

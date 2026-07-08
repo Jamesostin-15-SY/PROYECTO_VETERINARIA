@@ -22,15 +22,13 @@ public class frmMenusVeterinaria extends javax.swing.JFrame {
         MenuClientes = new javax.swing.JMenu();
         itemRegistrarCli = new javax.swing.JMenuItem();
         MenuCitas = new javax.swing.JMenu();
-        itemCancelar = new javax.swing.JMenuItem();
         itemAgenda = new javax.swing.JMenuItem();
+        MenuServicios = new javax.swing.JMenu();
+        itemMantenimiento = new javax.swing.JMenuItem();
         MenuAgendas = new javax.swing.JMenu();
         itemCitas = new javax.swing.JMenuItem();
-        Modificar = new javax.swing.JMenu();
-        itemEstado = new javax.swing.JMenuItem();
         MenuEmpleados = new javax.swing.JMenu();
         itemAgregar = new javax.swing.JMenuItem();
-        itemEliminar = new javax.swing.JMenuItem();
         itemTabla = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,14 +55,18 @@ public class frmMenusVeterinaria extends javax.swing.JFrame {
 
         MenuCitas.setText("Citas");
 
-        itemCancelar.setText("Cancelar Cita");
-        MenuCitas.add(itemCancelar);
-
         itemAgenda.setText("Agenda De Citas");
         itemAgenda.addActionListener(this::itemAgendaActionPerformed);
         MenuCitas.add(itemAgenda);
 
         jMenuBar2.add(MenuCitas);
+
+        MenuServicios.setText("Servicios");
+
+        itemMantenimiento.setText("Mantenimiento Servicios");
+        MenuServicios.add(itemMantenimiento);
+
+        jMenuBar2.add(MenuServicios);
 
         MenuAgendas.setText("Agenda");
 
@@ -73,20 +75,10 @@ public class frmMenusVeterinaria extends javax.swing.JFrame {
 
         jMenuBar2.add(MenuAgendas);
 
-        Modificar.setText("Procesos");
-
-        itemEstado.setText("Estado De La Cita");
-        Modificar.add(itemEstado);
-
-        jMenuBar2.add(Modificar);
-
         MenuEmpleados.setText("Empleados");
 
         itemAgregar.setText("Agregar empleados");
         MenuEmpleados.add(itemAgregar);
-
-        itemEliminar.setText("Eliminar Empleado");
-        MenuEmpleados.add(itemEliminar);
 
         itemTabla.setText("Tabla De Empleados");
         MenuEmpleados.add(itemTabla);
@@ -143,13 +135,11 @@ public class frmMenusVeterinaria extends javax.swing.JFrame {
     public javax.swing.JMenu MenuCitas;
     public javax.swing.JMenu MenuClientes;
     public javax.swing.JMenu MenuEmpleados;
-    public javax.swing.JMenu Modificar;
+    public javax.swing.JMenu MenuServicios;
     public javax.swing.JMenuItem itemAgenda;
     public javax.swing.JMenuItem itemAgregar;
-    public javax.swing.JMenuItem itemCancelar;
     public javax.swing.JMenuItem itemCitas;
-    public javax.swing.JMenuItem itemEliminar;
-    public javax.swing.JMenuItem itemEstado;
+    public javax.swing.JMenuItem itemMantenimiento;
     public javax.swing.JMenuItem itemRegistrarCli;
     public javax.swing.JMenuItem itemTabla;
     private javax.swing.JMenuBar jMenuBar2;

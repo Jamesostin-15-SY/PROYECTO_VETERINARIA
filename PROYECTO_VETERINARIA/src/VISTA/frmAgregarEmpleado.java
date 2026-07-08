@@ -49,6 +49,8 @@ public class frmAgregarEmpleado extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         lstServicios = new javax.swing.JList<>();
 
+        setClosable(true);
+        setIconifiable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlContrato.setBackground(new java.awt.Color(0, 0, 0));

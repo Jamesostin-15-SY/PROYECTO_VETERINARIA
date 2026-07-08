@@ -32,6 +32,8 @@ public class frmAgendadeCitasAsignadas extends javax.swing.JInternalFrame {
         txtIdCita = new javax.swing.JTextField();
         btnConfirmar = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlCitasAsignadas.setBackground(new java.awt.Color(0, 255, 51));
