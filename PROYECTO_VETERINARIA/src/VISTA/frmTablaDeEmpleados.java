@@ -36,6 +36,8 @@ public class frmTablaDeEmpleados extends javax.swing.JInternalFrame {
         txtDniEmpleado = new javax.swing.JTextField();
         btnConfirmar = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlEmpleados.setBackground(new java.awt.Color(153, 153, 255));

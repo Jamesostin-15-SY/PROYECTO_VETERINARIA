@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package VISTA;
 
 /**
@@ -36,6 +32,8 @@ public class frmAgendaDeCita extends javax.swing.JInternalFrame {
         cbxEstado = new javax.swing.JComboBox<>();
         btnCancelarCita = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlAgendaCitas.setBackground(new java.awt.Color(0, 0, 255));

@@ -6,7 +6,6 @@ public class ProcesosPermisos {
         mv.MenuClientes.setEnabled(false);
         mv.MenuCitas.setEnabled(false);
         mv.MenuAgendas.setEnabled(false);
-        mv.Modificar.setEnabled(false);
         mv.MenuEmpleados.setVisible(false); 
         
         
@@ -15,18 +14,18 @@ public class ProcesosPermisos {
             mv.MenuClientes.setEnabled(true);
             mv.MenuCitas.setEnabled(true);
             mv.MenuAgendas.setEnabled(true);
-            mv.Modificar.setEnabled(true);
             mv.MenuEmpleados.setVisible(true); 
+            mv.MenuServicios.setVisible(true);
             
         } else if (idRol == 2) { 
             
             mv.MenuClientes.setEnabled(true);
             mv.MenuCitas.setEnabled(true);
+            mv.MenuServicios.setEnabled(true);
             
         } else if (idRol == 3) { 
             
             mv.MenuAgendas.setEnabled(true);
-            mv.Modificar.setEnabled(true);
         }
     }
 }
