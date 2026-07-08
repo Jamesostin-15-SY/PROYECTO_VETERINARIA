@@ -28,11 +28,23 @@ public class ControladorEmpleado implements ActionListener {
     private int idRolCredencial;
     private static final int ESTADO_ACTIVO = 1;
 
-    // Listas fijas: qué labor corresponde a cada puesto (filtro en Java, sin tocar la BD)
+    // Puestos que SI tienen acceso al sistema (requieren credencial de usuario/contraseña)
+    private static final List<String> PUESTOS_CON_ACCESO = Arrays.asList(
+            "ADMINISTRADOR", "RECEPCIONISTA", "VETERINARIO", "VETERINARIO ESPECIALISTA");
+
+    // Labores/servicios que se muestran en el JList según el puesto elegido
     private static final List<String> LABORES_VETERINARIO = Arrays.asList(
-            "Médico Veterinario General", "Cirujano Veterinario", "Fisioterapeuta Veterinario");
+            "Consulta Veterinaria General", "Intervención Quirúrgica");
+
+    private static final List<String> LABORES_VETERINARIO_ESPECIALISTA = Arrays.asList(
+            "Cardiología Veterinaria", "Dermatología Veterinaria", "Fisioterapia y Rehabilitación",
+            "Oftalmología Veterinaria", "Oncología Veterinaria", "Odontología Veterinaria");
+
+    private static final List<String> LABORES_OTROS_PUESTOS = Arrays.asList(
+            "Logística y Traslados", "Mantenimiento", "Saneamiento Canino", "Paseos Caninos");
+
     private static final List<String> LABORES_AUXILIAR = Arrays.asList(
-            "Bañista", "Peluquero Canino", "Limpieza", "Técnica Veterinaria");
+            "Asistente Practicante");
 
     public ControladorEmpleado(frmAgregarEmpleado vista) {
         this.vista = vista;
@@ -46,13 +58,13 @@ public class ControladorEmpleado implements ActionListener {
         this.vista.btnRegistrarEmpleado.setEnabled(false);
         this.vista.btnAgregarCredencial.addActionListener(this);
         this.vista.btnRegistrarEmpleado.addActionListener(this);
-        this.vista.txtPuesto.addActionListener(this); // NUEVO: escucha cambios de puesto
+        this.vista.txtPuesto.addActionListener(this);
 
-        actualizarListaServicios(); // deja el JList correcto desde que se abre la ventana
+        actualizarListaServicios();
+        actualizarBotonesSegunPuesto();
     }
 
     private void cargarCombos() {
-        // La tabla 'puestos' en la BD ya solo tiene los 4 correctos, no hace falta filtrar aquí
         listaPuestos = puestoDAO.listarTodos();
         vista.txtPuesto.removeAllItems();
         for (Puestos p : listaPuestos) {
@@ -65,29 +77,43 @@ public class ControladorEmpleado implements ActionListener {
         }
     }
 
-    // NUEVO: trae UNA sola vez las 7 labores completas desde la BD
     private void cargarServiciosDisponibles() {
         listaServiciosTodos = empleadoDAO.listarTodosServicios();
     }
 
-    // NUEVO: según el puesto seleccionado, decide qué labores mostrar en el JList
+    private String getPuestoSeleccionado() {
+        int idx = vista.txtPuesto.getSelectedIndex();
+        if (idx < 0 || listaPuestos.isEmpty()) {
+            return "";
+        }
+        return listaPuestos.get(idx).getNombre_puesto().trim().toUpperCase();
+    }
+
+    // Devuelve la lista de labores permitidas según el puesto (o vacía si no aplica)
+    private List<String> obtenerLaboresPermitidas(String puesto) {
+        switch (puesto) {
+            case "VETERINARIO":
+                return LABORES_VETERINARIO;
+            case "VETERINARIO ESPECIALISTA":
+                return LABORES_VETERINARIO_ESPECIALISTA;
+            case "OTROS PUESTOS":
+                return LABORES_OTROS_PUESTOS;
+            case "AUXILIAR":
+                return LABORES_AUXILIAR;
+            default:
+                // ADMINISTRADOR y RECEPCIONISTA no requieren labores
+                return new ArrayList<>();
+        }
+    }
+
+    // Filtra el JList de labores según el puesto elegido
     private void actualizarListaServicios() {
-        int idxPuesto = vista.txtPuesto.getSelectedIndex();
-        if (idxPuesto < 0 || listaPuestos.isEmpty()) {
+        String puesto = getPuestoSeleccionado();
+        if (puesto.isEmpty()) {
             return;
         }
 
-        String puesto = listaPuestos.get(idxPuesto).getNombre_puesto().trim().toUpperCase();
-
-        List<String> permitidas;
-        if (puesto.equals("VETERINARIO")) {
-            permitidas = LABORES_VETERINARIO;
-        } else if (puesto.equals("AUXILIAR")) {
-            permitidas = LABORES_AUXILIAR;
-        } else {
-            // ADMINISTRADOR o RECEPCIONISTA no requieren labores/servicios
-            permitidas = new ArrayList<>();
-        }
+        List<String> permitidas = obtenerLaboresPermitidas(puesto);
 
         listaServiciosFiltrados = new ArrayList<>();
         DefaultListModel<String> modelo = new DefaultListModel<>();
@@ -98,14 +124,39 @@ public class ControladorEmpleado implements ActionListener {
             }
         }
         vista.lstServicios.setModel(modelo);
-        vista.lstServicios.setEnabled(!permitidas.isEmpty());
+
+        boolean habilitado = !permitidas.isEmpty();
+        vista.lstServicios.setEnabled(habilitado);
+        vista.lstServicios.setBackground(habilitado ? java.awt.Color.WHITE : java.awt.Color.LIGHT_GRAY);
         vista.lstServicios.clearSelection();
+    }
+
+    // Habilita/deshabilita "Agregar Credencial" y "Registrar Empleado" según el puesto
+    private void actualizarBotonesSegunPuesto() {
+        String puesto = getPuestoSeleccionado();
+        if (puesto.isEmpty()) {
+            return;
+        }
+
+        boolean requiereAcceso = PUESTOS_CON_ACCESO.contains(puesto);
+        vista.btnAgregarCredencial.setEnabled(requiereAcceso);
+
+        if (!requiereAcceso) {
+            // Puesto sin acceso al sistema: se puede registrar directo, sin credencial
+            credencialLista = false;
+            vista.btnRegistrarEmpleado.setEnabled(true);
+        } else {
+            // Puesto con acceso: solo se habilita Registrar cuando ya se agregó la credencial
+            vista.btnRegistrarEmpleado.setEnabled(credencialLista);
+        }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == vista.txtPuesto) {
+            credencialLista = false; // al cambiar de puesto, se reinicia el estado de credencial
             actualizarListaServicios();
+            actualizarBotonesSegunPuesto();
         }
         if (e.getSource() == vista.btnAgregarCredencial) {
             abrirDialogoCredencial();
@@ -115,7 +166,6 @@ public class ControladorEmpleado implements ActionListener {
         }
     }
 
-    // Valida los datos del empleado ANTES de dejar pasar al diálogo de credencial
     private boolean validarDatosEmpleado() {
         if (vista.txtDni.getText().trim().isEmpty() ||
             vista.txtPrimerNombre.getText().trim().isEmpty() ||
@@ -139,9 +189,8 @@ public class ControladorEmpleado implements ActionListener {
             return false;
         }
 
-        // NUEVO: solo exige seleccionar labor si el puesto es Veterinario o Auxiliar
-        String puesto = listaPuestos.get(vista.txtPuesto.getSelectedIndex()).getNombre_puesto().trim().toUpperCase();
-        boolean requiereLabor = puesto.equals("VETERINARIO") || puesto.equals("AUXILIAR");
+        String puesto = getPuestoSeleccionado();
+        boolean requiereLabor = !obtenerLaboresPermitidas(puesto).isEmpty();
         if (requiereLabor && vista.lstServicios.isSelectionEmpty()) {
             Mensajes.M1("Seleccione al menos una labor/servicio para este puesto.");
             return false;
@@ -150,7 +199,6 @@ public class ControladorEmpleado implements ActionListener {
     }
 
     private void abrirDialogoCredencial() {
-        // Validamos primero, antes de gastar tiempo llenando el diálogo
         if (!validarDatosEmpleado()) {
             return;
         }
@@ -175,11 +223,14 @@ public class ControladorEmpleado implements ActionListener {
     }
 
     private void ejecutarRegistro() {
-        // Estas validaciones se mantienen como respaldo (doble seguro)
         if (!validarDatosEmpleado()) {
             return;
         }
-        if (!credencialLista) {
+
+        String puesto = getPuestoSeleccionado();
+        boolean requiereAcceso = PUESTOS_CON_ACCESO.contains(puesto);
+
+        if (requiereAcceso && !credencialLista) {
             Mensajes.M1("Debe agregar la credencial antes de registrar.");
             return;
         }
@@ -203,7 +254,7 @@ public class ControladorEmpleado implements ActionListener {
             return;
         }
 
-        // NUEVO: registrar las labores/servicios seleccionadas (relación N:N) usando la lista FILTRADA
+        // Registrar las labores/servicios seleccionadas (relación N:N)
         int[] indicesSeleccionados = vista.lstServicios.getSelectedIndices();
         String dniEmpleadoNuevo = vista.txtDni.getText().trim();
         for (int idx : indicesSeleccionados) {
@@ -211,18 +262,24 @@ public class ControladorEmpleado implements ActionListener {
             empleadoDAO.asignarServicio(dniEmpleadoNuevo, idServicio);
         }
 
-        UsuariosCredenciales nuevaCredencial = new UsuariosCredenciales();
-        nuevaCredencial.setFk_dni_empleado(vista.txtDni.getText().trim());
-        nuevaCredencial.setUsuario(usuarioCredencial);
-        nuevaCredencial.setContrasena(contrasenaCredencial);
-        nuevaCredencial.setFk_id_role(idRolCredencial);
+        // Solo se registra credencial si el puesto requiere acceso al sistema
+        if (requiereAcceso) {
+            UsuariosCredenciales nuevaCredencial = new UsuariosCredenciales();
+            nuevaCredencial.setFk_dni_empleado(vista.txtDni.getText().trim());
+            nuevaCredencial.setUsuario(usuarioCredencial);
+            nuevaCredencial.setContrasena(contrasenaCredencial);
+            nuevaCredencial.setFk_id_role(idRolCredencial);
 
-        if (empleadoDAO.registrarCredencial(nuevaCredencial)) {
-            Mensajes.M1("¡Empleado y credencial registrados exitosamente!");
-            bloquearCampos();
+            if (empleadoDAO.registrarCredencial(nuevaCredencial)) {
+                Mensajes.M1("¡Empleado y credencial registrados exitosamente!");
+            } else {
+                Mensajes.M1("El empleado se registró, pero hubo un error al guardar la credencial.");
+            }
         } else {
-            Mensajes.M1("El empleado se registró, pero hubo un error al guardar la credencial.");
+            Mensajes.M1("¡Empleado registrado exitosamente!");
         }
+
+        bloquearCampos();
     }
 
     private void bloquearCampos() {
