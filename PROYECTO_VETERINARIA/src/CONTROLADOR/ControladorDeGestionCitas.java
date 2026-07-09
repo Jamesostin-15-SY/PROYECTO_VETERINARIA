@@ -76,7 +76,7 @@ public class ControladorDeGestionCitas implements ActionListener {
         if (listaVeterinarios != null && !listaVeterinarios.isEmpty()) {
             for (Empleados emp : listaVeterinarios) {
 
-                String nombreCompleto = emp.getPrimer_nombre() + " " + emp.getApellido_paterno();
+                String nombreCompleto = "Dr. "+ emp.getPrimer_nombre() + " " + emp.getApellido_paterno();
                 vista.cbxVeterinario.addItem(nombreCompleto);
             }
         } else {
@@ -153,7 +153,6 @@ public class ControladorDeGestionCitas implements ActionListener {
         nuevaCita.setFk_id_estado(idEstado);
         nuevaCita.setMotivo_cita(motivo);
         nuevaCita.setFk_id_servicio(1);
-
         nuevaCita.setFk_id_servicio(idServicio);
 
         if (CrudCitas.registrarCita(nuevaCita)) {

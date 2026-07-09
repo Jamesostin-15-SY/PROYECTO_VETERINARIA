@@ -10,6 +10,4 @@ public class EstadosEmpleados {
     public void setId_estado_emp(int id_estado_emp) {this.id_estado_emp = id_estado_emp; }
     public String getNombre_estado() {return nombre_estado; }
     public void setNombre_estado(String nombre_estado) {this.nombre_estado = nombre_estado; }  
-    
-    
 }
