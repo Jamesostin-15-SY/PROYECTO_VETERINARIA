@@ -2,9 +2,8 @@ package DAO;
 import MODELO.*;
 import java.sql.*;
 
-public class CrudUsuarioslmp extends Conexion implements CrudUsuarios {
-    
-    @Override
+public class CrudUsuarioslmp extends Conexion {
+
     public UsuariosCredenciales ValidarAcceso(String user, String pass) {
         UsuariosCredenciales uc = null;
         Connection cn = getCon();

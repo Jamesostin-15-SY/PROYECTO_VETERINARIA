@@ -94,7 +94,5 @@ public class ControladorMascotas implements ActionListener{
         vista.jdcFechaNaci.setEnabled(false);
         vista.btnRegistrarMas.setEnabled(false);
     }
-    
-    
 }
 
