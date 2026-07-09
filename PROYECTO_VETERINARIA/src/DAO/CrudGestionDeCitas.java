@@ -157,4 +157,96 @@ public class CrudGestionDeCitas {
             System.out.println("Error al cerrar recursos: " + e.toString());
         }
     }
+    
+    public boolean registrarServicio(Servicios servicio, String descripcion) {
+    // Forzamos el uso de las columnas correctas
+    String sql = "INSERT INTO servicios (nombre_servicio, precio, descripcion, fk_id_estado_serv) VALUES (?, ?, ?, ?)";
+
+    try {
+        con = conectar.getCon();
+        ps = con.prepareStatement(sql);
+        ps.setString(1, servicio.getNombre_servicio());
+        ps.setDouble(2, servicio.getPrecio());
+        ps.setString(3, descripcion);
+        ps.setInt(4, 1); // Registra por defecto con el ID de estado 1 ('DISPONIBLE')
+
+        int resultado = ps.executeUpdate();
+        return resultado > 0;
+    } catch (SQLException e) {
+        System.out.println("Error crítico al registrar servicio: " + e.getMessage());
+        return false;
+    } finally {
+        cerrarRecursos();
+    }
+}
+
+   public List<Object[]> listarServiciosTabla() {
+        List<Object[]> lista = new ArrayList<>();
+        // Unimos las tablas para traer el nombre del estado real de la BD
+        String sql = "SELECT s.id_servicio, s.nombre_servicio, s.precio, s.descripcion, e.nombre_estado_serv " +
+                     "FROM servicios s " +
+                     "INNER JOIN estados_servicios e ON s.fk_id_estado_serv = e.id_estado_serv";
+
+        try {
+            con = conectar.getCon();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                lista.add(new Object[]{
+                    rs.getInt("id_servicio"),            // [0] ID
+                    rs.getString("nombre_servicio"),     // [1] Nombre
+                    rs.getDouble("precio"),              // [2] Precio
+                    rs.getString("descripcion"),         // [3] Descripción
+                    rs.getString("nombre_estado_serv")   // [4] Estado (¡Nueva columna!)
+                });
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al listar servicios en la tabla: " + e.toString());
+        } finally {
+            cerrarRecursos();
+        }
+        return lista;
+    }
+
+    // 2. NUEVO MÉTODO PARA LISTAR LOS ESTADOS DISPONIBLES EN EL COMBOBOX INFERIOR
+    public List<Object[]> listarEstadosServiciosCombo() {
+        List<Object[]> lista = new ArrayList<>();
+        String sql = "SELECT id_estado_serv, nombre_estado_serv FROM estados_servicios";
+
+        try {
+            con = conectar.getCon();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                lista.add(new Object[]{rs.getInt("id_estado_serv"), rs.getString("nombre_estado_serv")});
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al listar estados de servicios: " + e.toString());
+        } finally {
+            cerrarRecursos();
+        }
+        return lista;
+    }
+
+    // 3. NUEVO MÉTODO PARA ACTUALIZAR EL ESTADO
+    public boolean modificarEstadoServicio(int idServicio, int idEstadoNuevo) {
+        String sql = "UPDATE servicios SET fk_id_estado_serv = ? WHERE id_servicio = ?";
+
+        try {
+            con = conectar.getCon();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, idEstadoNuevo);
+            ps.setInt(2, idServicio);
+
+            int resultado = ps.executeUpdate();
+            return resultado > 0;
+        } catch (SQLException e) {
+            System.out.println("Error al modificar el estado del servicio: " + e.toString());
+            return false;
+        } finally {
+            cerrarRecursos();
+        }
+    }
 }

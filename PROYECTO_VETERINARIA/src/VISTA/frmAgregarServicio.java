@@ -15,6 +15,7 @@ public class frmAgregarServicio extends javax.swing.JInternalFrame {
      */
     public frmAgregarServicio() {
         initComponents();
+        new CONTROLADOR.ControladorDeServicios(this);
     }
 
     /**
@@ -32,7 +33,7 @@ public class frmAgregarServicio extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jspDescripcion = new javax.swing.JScrollPane();
         jScrollPane2 = new javax.swing.JScrollPane();
-        txaDescipcion = new javax.swing.JTextArea();
+        txaDescripcion = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
@@ -54,12 +55,10 @@ public class frmAgregarServicio extends javax.swing.JInternalFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Datos del Servicio");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre del Servicio");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
@@ -70,34 +69,30 @@ public class frmAgregarServicio extends javax.swing.JInternalFrame {
         jPanel1.add(spPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 330, 50));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Precio del servicio");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
-        txaDescipcion.setColumns(20);
-        txaDescipcion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txaDescipcion.setRows(5);
-        jScrollPane2.setViewportView(txaDescipcion);
+        txaDescripcion.setColumns(20);
+        txaDescripcion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txaDescripcion.setRows(5);
+        jScrollPane2.setViewportView(txaDescripcion);
 
         jspDescripcion.setViewportView(jScrollPane2);
 
         jPanel1.add(jspDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 330, 60));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Descripción del servicio");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
 
         btnGuardar.setBackground(new java.awt.Color(102, 255, 102));
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnGuardar.setForeground(new java.awt.Color(0, 0, 0));
         btnGuardar.setText("GUARDAR");
         btnGuardar.addActionListener(this::btnGuardarActionPerformed);
         jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 330, 40));
 
         btnNuevo.setBackground(new java.awt.Color(102, 255, 102));
         btnNuevo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnNuevo.setForeground(new java.awt.Color(0, 0, 0));
         btnNuevo.setText("NUEVO SERVICIO");
         jPanel1.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 330, 40));
 
@@ -105,15 +100,23 @@ public class frmAgregarServicio extends javax.swing.JInternalFrame {
 
         tblServicios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre del Servicio", "Precio del Servicio", "Descripción"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblServicios);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 510, 560));
@@ -153,7 +156,6 @@ public class frmAgregarServicio extends javax.swing.JInternalFrame {
 
         btnModificar.setBackground(new java.awt.Color(51, 255, 204));
         btnModificar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnModificar.setForeground(new java.awt.Color(0, 0, 0));
         btnModificar.setText("MODIFICAR");
         jPanel2.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 330, 40));
 
@@ -192,7 +194,7 @@ public class frmAgregarServicio extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jspDescripcion;
     public javax.swing.JSpinner spPrecio;
     public javax.swing.JTable tblServicios;
-    private javax.swing.JTextArea txaDescipcion;
+    public javax.swing.JTextArea txaDescripcion;
     public javax.swing.JTextField txtIdServicio;
     public javax.swing.JTextField txtNombreServicio;
     // End of variables declaration//GEN-END:variables
