@@ -82,4 +82,33 @@ public class CrudCitas extends Conexion{
         return lista;
     }
     
+    public String obtenerDatosVeterinarioPorCita(int idCita) {
+        String datosVeterinario = "";
+        String sql = "SELECT e.primer_nombre, e.apellido_paterno " +
+                     "FROM citas c " +
+                     "JOIN empleados e ON c.fk_dni_veterinario = e.dni_empleado " +
+                     "WHERE c.id_cita = ?"; 
+        
+        Connection cn = getCon(); 
+        try {
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setInt(1, idCita);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                datosVeterinario = "Veterinario Asignado:\n" +
+                                   "-------------------------\n" +
+                                   "Nombre: " + rs.getString("primer_nombre") + " " + rs.getString("apellido_paterno");
+            } else {
+                datosVeterinario = "No se encontró un veterinario asignado a la cita ID: " + idCita;
+            }
+            
+            rs.close();
+            ps.close();
+        } catch (Exception e) {
+            System.out.println("Error al obtener datos del veterinario en DAO: " + e);
+            datosVeterinario = "Error al cargar los datos del veterinario.";
+        }
+        return datosVeterinario;
+    }
 }

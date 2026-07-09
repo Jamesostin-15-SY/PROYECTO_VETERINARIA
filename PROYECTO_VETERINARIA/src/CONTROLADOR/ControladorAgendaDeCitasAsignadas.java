@@ -14,27 +14,48 @@ import javax.swing.JOptionPane;
 public class ControladorAgendaDeCitasAsignadas implements ActionListener{
     private final frmAgendadeCitasAsignadas vista;
     private final CrudAgendaDeCitasAsignadas dao;
+    private final CrudCitas crudCitas;
     private List<Object[]> listaEstadosFiltrados;
-    public ControladorAgendaDeCitasAsignadas(frmAgendadeCitasAsignadas vista) {
-        this.vista = vista;
-        this.dao = new CrudAgendaDeCitasAsignadas();
+    
+    // MODIFICADO: Variables globales para retener la sesión del empleado/veterinario
+    private String dniVeterinarioLogueado;
+    private String nombreVeterinarioLogueado;
 
-        cargarTabla();
-        cargarComboEstadosCita();
+    // MODIFICADO: El constructor ahora exige recibir el DNI y el Nombre desde el Login
+    public ControladorAgendaDeCitasAsignadas(frmAgendadeCitasAsignadas vista, String dniVet, String nombreVet) {
+    this.vista = vista;
+    this.dniVeterinarioLogueado = dniVet;
+    this.nombreVeterinarioLogueado = nombreVet;
+    
+    this.dao = new CrudAgendaDeCitasAsignadas();
+    this.crudCitas = new CrudCitas();
 
-        this.vista.btnConfirmar.addActionListener(this);
-        
-        this.vista.tblAgendaDeCitas.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                seleccionarFilaCita();
-            }
-        });
-    }
+    // AQUÍ COLOCAS EL NUEVO CÓDIGO (Reemplazando la línea única que tenías antes):
+    this.vista.jTextArea1.setText(
+        "===================================\n" +
+        "       VETERINARIO LOGUEADO        \n" +
+        "===================================\n" +
+        "DNI:    " + dniVeterinarioLogueado + "\n" +
+        "Nombre: " + nombreVeterinarioLogueado + "\n" +
+        "==================================="
+    );
+
+    cargarTabla();
+    cargarComboEstadosCita();
+
+    this.vista.btnConfirmar.addActionListener(this);
+    
+    this.vista.tblAgendaDeCitas.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            seleccionarFilaCita();
+        }
+    });
+}
 
     public void cargarTabla() {
         DefaultTableModel model = new DefaultTableModel(
-            new Object[]{"ID", "Mascota", "Veterinario", "Servicio", "Fecha/Hora", "Estado", "Motivo"}, 0
+            new Object[]{"ID", "MASCOTA", "SERVICIO", "ESTADO", "MOTIVO", "FECHA Y HORA"}, 0
         ) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -43,17 +64,30 @@ public class ControladorAgendaDeCitasAsignadas implements ActionListener{
         };
 
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-        List<Citas> lista = dao.listarCitasAsignadas();
+        
+        List<Citas> lista = dao.listarCitasAsignadas(dniVeterinarioLogueado);
         
         for (Citas c : lista) {
             model.addRow(new Object[]{
-                c.getId_cita(), c.nombreMascotaAux, c.nombreVeterinarioAux, 
-                c.nombreServicioAux, c.getFecha_hora().format(formato), 
-                c.nombreEstadoAux, c.getMotivo_cita()
+                c.getId_cita(),             
+                c.nombreMascotaAux,         
+                c.nombreServicioAux,        
+                c.nombreEstadoAux,          
+                c.getMotivo_cita(),         
+                c.getFecha_hora().format(formato) 
             });
         }
         this.vista.tblAgendaDeCitas.setModel(model); 
     }
+
+    private void seleccionarFilaCita() {
+        int filaSeleccionada = this.vista.tblAgendaDeCitas.getSelectedRow(); 
+        if (filaSeleccionada != -1) {
+            String idCita = this.vista.tblAgendaDeCitas.getValueAt(filaSeleccionada, 0).toString();
+            this.vista.txtIdCita.setText(idCita); 
+        }
+    }
+    
     private void cargarComboEstadosCita() {
         this.vista.cbxEstadoCita.removeAllItems(); 
         listaEstadosFiltrados = dao.listarEstadosCitaPermitidosCombo();
@@ -64,19 +98,14 @@ public class ControladorAgendaDeCitasAsignadas implements ActionListener{
             this.vista.cbxEstadoCita.addItem(estado[1].toString());
         }
     }
-    private void seleccionarFilaCita() {
-        int filaSeleccionada = this.vista.tblAgendaDeCitas.getSelectedRow(); 
-        if (filaSeleccionada != -1) {
-            String idCita = this.vista.tblAgendaDeCitas.getValueAt(filaSeleccionada, 0).toString();
-            this.vista.txtIdCita.setText(idCita); 
-        }
-    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.vista.btnConfirmar) { 
             ejecutarCambioEstadoCita();
         }
     }
+    
     private void ejecutarCambioEstadoCita() {
         String idCitaStr = this.vista.txtIdCita.getText().trim(); 
         int indexEstado = this.vista.cbxEstadoCita.getSelectedIndex(); 
@@ -105,7 +134,7 @@ public class ControladorAgendaDeCitasAsignadas implements ActionListener{
             if (exito) {
                 JOptionPane.showMessageDialog(vista, "El estado de la cita se ha actualizado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 this.vista.txtIdCita.setText("");
-                cargarTabla();
+                cargarTabla(); // Volverá a recargar filtrando automáticamente por el mismo DNI
             } else {
                 JOptionPane.showMessageDialog(vista, "No se pudo actualizar el estado de la cita.", "Error", JOptionPane.ERROR_MESSAGE);
             }

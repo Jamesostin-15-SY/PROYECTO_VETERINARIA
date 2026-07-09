@@ -31,6 +31,8 @@ public class frmAgendadeCitasAsignadas extends javax.swing.JInternalFrame {
         cbxEstadoCita = new javax.swing.JComboBox<>();
         txtIdCita = new javax.swing.JTextField();
         btnConfirmar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setClosable(true);
         setIconifiable(true);
@@ -53,7 +55,7 @@ public class frmAgendadeCitasAsignadas extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblAgendaDeCitas);
 
-        pnlCitasAsignadas.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 990, 350));
+        pnlCitasAsignadas.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 970, 230));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("MODIFICAR ESTADO DE LAS CITAS");
@@ -67,7 +69,7 @@ public class frmAgendadeCitasAsignadas extends javax.swing.JInternalFrame {
         jLabel3.setText("ESTADO DE LA CITA");
         pnlCitasAsignadas.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 400, -1, -1));
 
-        cbxEstadoCita.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxEstadoCita.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ACTIVA", "INACTIVA" }));
         pnlCitasAsignadas.add(cbxEstadoCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, 480, 60));
         pnlCitasAsignadas.add(txtIdCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 460, 60));
 
@@ -75,6 +77,13 @@ public class frmAgendadeCitasAsignadas extends javax.swing.JInternalFrame {
         btnConfirmar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnConfirmar.setText("CONFIRMAR");
         pnlCitasAsignadas.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 510, 470, 70));
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        pnlCitasAsignadas.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 970, 120));
 
         getContentPane().add(pnlCitasAsignadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 600));
 
@@ -89,6 +98,8 @@ public class frmAgendadeCitasAsignadas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     public javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    public javax.swing.JTextArea jTextArea1;
     public javax.swing.JPanel pnlCitasAsignadas;
     public javax.swing.JTable tblAgendaDeCitas;
     public javax.swing.JTextField txtIdCita;
