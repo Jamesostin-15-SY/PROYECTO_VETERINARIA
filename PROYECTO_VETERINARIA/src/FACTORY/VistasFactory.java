@@ -3,6 +3,7 @@ import VISTA.*;
 import CONTROLADOR.*;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
+
 public class VistasFactory {
     private static void PresentarVista (JInternalFrame iframe, JDesktopPane contenedor) {
         contenedor.removeAll();
@@ -13,7 +14,12 @@ public class VistasFactory {
         iframe.setLocation(x, y);
         iframe.setVisible(true);
     }
+
     public static void CrearVista (String nomvista, String titulo, JDesktopPane contenedor) {
+        CrearVista(nomvista, titulo, contenedor, null);
+    }
+    
+    public static void CrearVista (String nomvista, String titulo, JDesktopPane contenedor, MODELO.Empleados emp) {
         if (nomvista.equals("RegistrarClie")){
             frmRegistrarClientes FRC = new frmRegistrarClientes();
             ControladorCliente CC = new ControladorCliente(FRC);
@@ -46,10 +52,10 @@ public class VistasFactory {
             ControladorEmpleado CE = new ControladorEmpleado(FE);   
             FE.setTitle(titulo);
             PresentarVista(FE, contenedor); 
-            }
+        }
 
         if (nomvista.equals("AgendasAsignadas")){
-            frmAgendadeCitasAsignadas FACA = new frmAgendadeCitasAsignadas();
+            frmAgendadeCitasAsignadas FACA = new frmAgendadeCitasAsignadas(emp);
             FACA.setTitle(titulo);
             PresentarVista(FACA, contenedor);
         }

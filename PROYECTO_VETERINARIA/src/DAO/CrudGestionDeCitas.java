@@ -159,7 +159,6 @@ public class CrudGestionDeCitas {
     }
     
     public boolean registrarServicio(Servicios servicio, String descripcion) {
-    // Forzamos el uso de las columnas correctas
     String sql = "INSERT INTO servicios (nombre_servicio, precio, descripcion, fk_id_estado_serv) VALUES (?, ?, ?, ?)";
 
     try {
@@ -168,7 +167,7 @@ public class CrudGestionDeCitas {
         ps.setString(1, servicio.getNombre_servicio());
         ps.setDouble(2, servicio.getPrecio());
         ps.setString(3, descripcion);
-        ps.setInt(4, 1); // Registra por defecto con el ID de estado 1 ('DISPONIBLE')
+        ps.setInt(4, 1); 
 
         int resultado = ps.executeUpdate();
         return resultado > 0;
@@ -182,7 +181,6 @@ public class CrudGestionDeCitas {
 
    public List<Object[]> listarServiciosTabla() {
         List<Object[]> lista = new ArrayList<>();
-        // Unimos las tablas para traer el nombre del estado real de la BD
         String sql = "SELECT s.id_servicio, s.nombre_servicio, s.precio, s.descripcion, e.nombre_estado_serv " +
                      "FROM servicios s " +
                      "INNER JOIN estados_servicios e ON s.fk_id_estado_serv = e.id_estado_serv";
@@ -194,11 +192,11 @@ public class CrudGestionDeCitas {
 
             while (rs.next()) {
                 lista.add(new Object[]{
-                    rs.getInt("id_servicio"),            // [0] ID
-                    rs.getString("nombre_servicio"),     // [1] Nombre
-                    rs.getDouble("precio"),              // [2] Precio
-                    rs.getString("descripcion"),         // [3] Descripción
-                    rs.getString("nombre_estado_serv")   // [4] Estado (¡Nueva columna!)
+                    rs.getInt("id_servicio"),           
+                    rs.getString("nombre_servicio"),    
+                    rs.getDouble("precio"),          
+                    rs.getString("descripcion"),      
+                    rs.getString("nombre_estado_serv")   
                 });
             }
         } catch (SQLException e) {
@@ -209,7 +207,6 @@ public class CrudGestionDeCitas {
         return lista;
     }
 
-    // 2. NUEVO MÉTODO PARA LISTAR LOS ESTADOS DISPONIBLES EN EL COMBOBOX INFERIOR
     public List<Object[]> listarEstadosServiciosCombo() {
         List<Object[]> lista = new ArrayList<>();
         String sql = "SELECT id_estado_serv, nombre_estado_serv FROM estados_servicios";
@@ -230,7 +227,6 @@ public class CrudGestionDeCitas {
         return lista;
     }
 
-    // 3. NUEVO MÉTODO PARA ACTUALIZAR EL ESTADO
     public boolean modificarEstadoServicio(int idServicio, int idEstadoNuevo) {
         String sql = "UPDATE servicios SET fk_id_estado_serv = ? WHERE id_servicio = ?";
 

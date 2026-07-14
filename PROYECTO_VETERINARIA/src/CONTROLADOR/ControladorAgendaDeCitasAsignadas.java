@@ -1,7 +1,8 @@
 package CONTROLADOR;
 import DAO.*;
-import MODELO.*;
 import VISTA.*;
+import MODELO.Empleados;
+import MODELO.Citas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.table.DefaultTableModel;
@@ -11,47 +12,52 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 
-public class ControladorAgendaDeCitasAsignadas implements ActionListener{
+public class ControladorAgendaDeCitasAsignadas implements ActionListener {
+    
     private final frmAgendadeCitasAsignadas vista;
     private final CrudAgendaDeCitasAsignadas dao;
     private final CrudCitas crudCitas;
     private List<Object[]> listaEstadosFiltrados;
     
-    // MODIFICADO: Variables globales para retener la sesión del empleado/veterinario
     private String dniVeterinarioLogueado;
     private String nombreVeterinarioLogueado;
 
-    // MODIFICADO: El constructor ahora exige recibir el DNI y el Nombre desde el Login
-    public ControladorAgendaDeCitasAsignadas(frmAgendadeCitasAsignadas vista, String dniVet, String nombreVet) {
-    this.vista = vista;
-    this.dniVeterinarioLogueado = dniVet;
-    this.nombreVeterinarioLogueado = nombreVet;
-    
-    this.dao = new CrudAgendaDeCitasAsignadas();
-    this.crudCitas = new CrudCitas();
+    public ControladorAgendaDeCitasAsignadas(frmAgendadeCitasAsignadas vista) {
+        this.vista = vista;
+        this.dao = new CrudAgendaDeCitasAsignadas();
+        this.crudCitas = new CrudCitas();
 
-    // AQUÍ COLOCAS EL NUEVO CÓDIGO (Reemplazando la línea única que tenías antes):
-    this.vista.jTextArea1.setText(
-        "===================================\n" +
-        "       VETERINARIO LOGUEADO        \n" +
-        "===================================\n" +
-        "DNI:    " + dniVeterinarioLogueado + "\n" +
-        "Nombre: " + nombreVeterinarioLogueado + "\n" +
-        "==================================="
-    );
-
-    cargarTabla();
-    cargarComboEstadosCita();
-
-    this.vista.btnConfirmar.addActionListener(this);
-    
-    this.vista.tblAgendaDeCitas.addMouseListener(new MouseAdapter() {
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            seleccionarFilaCita();
+        if (this.vista.veterinarioLogueado != null) {
+            MODELO.Empleados emp = this.vista.veterinarioLogueado;
+            this.dniVeterinarioLogueado = emp.getDni_empleado();
+            this.nombreVeterinarioLogueado = emp.getPrimer_nombre() + " " + emp.getApellido_paterno();
         }
-    });
-}
+
+        mostrarDatosEnTexto();
+        cargarTabla();
+        cargarComboEstadosCita();
+
+        this.vista.btnConfirmar.addActionListener(this);
+        
+        this.vista.tblAgendaDeCitas.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                seleccionarFilaCita();
+            }
+        });
+    }
+
+    public void mostrarDatosEnTexto() {
+        this.vista.jTextArea1.setText(
+            "===================================\n" +
+            "        VETERINARIO LOGUEADO        \n" +
+            "===================================\n" +
+            "DNI:    " + dniVeterinarioLogueado + "\n" +
+            "Nombre: " + nombreVeterinarioLogueado + "\n" +
+            "==================================="
+        );
+        this.vista.jTextArea1.setEditable(false);
+    }
 
     public void cargarTabla() {
         DefaultTableModel model = new DefaultTableModel(
@@ -67,15 +73,17 @@ public class ControladorAgendaDeCitasAsignadas implements ActionListener{
         
         List<Citas> lista = dao.listarCitasAsignadas(dniVeterinarioLogueado);
         
-        for (Citas c : lista) {
-            model.addRow(new Object[]{
-                c.getId_cita(),             
-                c.nombreMascotaAux,         
-                c.nombreServicioAux,        
-                c.nombreEstadoAux,          
-                c.getMotivo_cita(),         
-                c.getFecha_hora().format(formato) 
-            });
+        if (lista != null) {
+            for (Citas c : lista) {
+                model.addRow(new Object[]{
+                    c.getId_cita(),             
+                    c.nombreMascotaAux,         
+                    c.nombreServicioAux,        
+                    c.nombreEstadoAux,          
+                    c.getMotivo_cita(),         
+                    c.getFecha_hora().format(formato) 
+                });
+            }
         }
         this.vista.tblAgendaDeCitas.setModel(model); 
     }
@@ -134,7 +142,7 @@ public class ControladorAgendaDeCitasAsignadas implements ActionListener{
             if (exito) {
                 JOptionPane.showMessageDialog(vista, "El estado de la cita se ha actualizado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 this.vista.txtIdCita.setText("");
-                cargarTabla(); // Volverá a recargar filtrando automáticamente por el mismo DNI
+                cargarTabla(); 
             } else {
                 JOptionPane.showMessageDialog(vista, "No se pudo actualizar el estado de la cita.", "Error", JOptionPane.ERROR_MESSAGE);
             }

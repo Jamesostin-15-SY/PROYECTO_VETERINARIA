@@ -7,13 +7,12 @@ import java.util.List;
 
 public class CrudAgendaDeCitasAsignadas {
 
-    // MODIFICADO: Ahora recibe el DNI del veterinario logueado por parámetro
     public List<Citas> listarCitasAsignadas(String dniVeterinario) {
         List<Citas> lista = new ArrayList<>();
         
-        // MODIFICADO: Agregamos el "WHERE c.fk_dni_veterinario = ?" al final del Query
-        String sql = "SELECT c.*, m.nombre_mascota, e.primer_nombre AS nombre_vet, "
-                + "s.nombre_servicio, est.nombre_estado "
+        // Query adaptado exactamente al nuevo diseño de tablas de tus compañeros
+        String sql = "SELECT c.id_cita, m.nombre_mascota, e.primer_nombre AS nombre_vet, "
+                + "s.nombre_servicio, est.nombre_estado, c.motivo_cita, c.fecha_hora "
                 + "FROM citas c "
                 + "INNER JOIN mascotas m ON c.fk_id_mascota = m.id_mascota "
                 + "INNER JOIN empleados e ON c.fk_dni_veterinario = e.dni_empleado "
@@ -23,10 +22,8 @@ public class CrudAgendaDeCitasAsignadas {
 
         Conexion conObj = new Conexion();
         
-        // MODIFICADO: Quitamos el "ps.executeQuery()" del try-with-resources ya que primero debemos setear el parámetro
         try (Connection con = conObj.getCon(); PreparedStatement ps = con.prepareStatement(sql)) {
             
-            // MODIFICADO: Le pasamos el DNI recibido al signo de interrogación "?"
             ps.setString(1, dniVeterinario);
             
             try (ResultSet rs = ps.executeQuery()) {
@@ -36,20 +33,20 @@ public class CrudAgendaDeCitasAsignadas {
                     c.nombreMascotaAux = rs.getString("nombre_mascota");
                     c.nombreVeterinarioAux = rs.getString("nombre_vet");
                     c.nombreServicioAux = rs.getString("nombre_servicio");
-                    c.nombreEstadoAux = rs.getString("nombre_estado");
+                    c.nombreEstadoAux = rs.getString("nombre_estado"); 
                     c.setMotivo_cita(rs.getString("motivo_cita"));
                     c.setFecha_hora(rs.getTimestamp("fecha_hora").toLocalDateTime());
                     lista.add(c);
                 }
             }
         } catch (SQLException e) {
-            System.err.println("Error: " + e.getMessage());
+            System.err.println("Error en listarCitasAsignadas: " + e.getMessage());
         }
         return lista;
     }
 
-    public java.util.List<Object[]> listarEstadosCitaPermitidosCombo() {
-        java.util.List<Object[]> lista = new java.util.ArrayList<>();
+    public List<Object[]> listarEstadosCitaPermitidosCombo() {
+        List<Object[]> lista = new ArrayList<>();
         Conexion conObj = new Conexion();
 
         String sql = "SELECT id_estado, nombre_estado FROM estados_cita WHERE nombre_estado IN ('ATENDIDA', 'FINALIZADA')";
@@ -66,7 +63,7 @@ public class CrudAgendaDeCitasAsignadas {
 
     public boolean actualizarEstadoCita(int idCita, int idEstado) {
         Conexion conObj = new Conexion();
-        String sql = "UPDATE citas SET fk_id_estado = ? WHERE id_cita = ?"; //
+        String sql = "UPDATE citas SET fk_id_estado = ? WHERE id_cita = ?"; 
 
         try (Connection con = conObj.getCon(); PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, idEstado);

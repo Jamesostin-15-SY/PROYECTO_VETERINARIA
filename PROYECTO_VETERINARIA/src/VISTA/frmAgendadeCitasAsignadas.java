@@ -1,17 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package VISTA;
-import CONTROLADOR.ControladorAgendaDeCitasAsignadas; 
 
+import CONTROLADOR.ControladorAgendaDeCitasAsignadas; 
 
 public class frmAgendadeCitasAsignadas extends javax.swing.JInternalFrame {
 
-    public frmAgendadeCitasAsignadas() {
+   public MODELO.Empleados veterinarioLogueado;
+   
+   public frmAgendadeCitasAsignadas(MODELO.Empleados emp) {
         initComponents();
-    }
-
+        this.veterinarioLogueado = emp;
+        
+        CONTROLADOR.ControladorAgendaDeCitasAsignadas contr = new CONTROLADOR.ControladorAgendaDeCitasAsignadas(this);
+   }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.

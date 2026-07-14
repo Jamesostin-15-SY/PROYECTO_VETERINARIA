@@ -71,6 +71,7 @@ public class frmMenusVeterinaria extends javax.swing.JFrame {
         MenuAgendas.setText("Agenda");
 
         itemCitas.setText("Citas Asignadas");
+        itemCitas.addActionListener(this::itemCitasActionPerformed);
         MenuAgendas.add(itemCitas);
 
         jMenuBar2.add(MenuAgendas);
@@ -104,6 +105,16 @@ public class frmMenusVeterinaria extends javax.swing.JFrame {
     private void itemAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAgendaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_itemAgendaActionPerformed
+
+    private void itemCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCitasActionPerformed
+        // TODO add your handling code here:
+        MODELO.Empleados empTemporal = new MODELO.Empleados();
+        empTemporal.setDni_empleado("73458923"); 
+        empTemporal.setPrimer_nombre("Makanaky");
+        empTemporal.setApellido_paterno("Chavez");
+
+        FACTORY.VistasFactory.CrearVista("AgendasAsignadas", "Agenda de Citas Asignadas", spnContenedor, empTemporal);
+    }//GEN-LAST:event_itemCitasActionPerformed
 
     /**
      * @param args the command line arguments
