@@ -20,7 +20,9 @@ public class CrudUsuarioslmp extends Conexion implements CrudUsuarios {
                 uc = new UsuariosCredenciales();
                 uc.setUsuario(rs.getString("usuario"));
                 uc.setContrasena(rs.getString("contrasena"));
-                uc.setFk_id_role(rs.getInt("fk_id_role")); // Rescatamos el rol de la BD
+                uc.setFk_id_role(rs.getInt("fk_id_role"));
+                
+                uc.setFk_dni_empleado(rs.getString("fk_dni_empleado"));
             }
             ps.close();
             rs.close();

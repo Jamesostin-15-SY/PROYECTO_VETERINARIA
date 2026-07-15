@@ -50,7 +50,7 @@ public class ControladorAgendaDeCitasAsignadas implements ActionListener {
     public void mostrarDatosEnTexto() {
         this.vista.jTextArea1.setText(
             "===================================\n" +
-            "        VETERINARIO LOGUEADO        \n" +
+            "             VETERINARIO           \n" +
             "===================================\n" +
             "DNI:    " + dniVeterinarioLogueado + "\n" +
             "Nombre: " + nombreVeterinarioLogueado + "\n" +

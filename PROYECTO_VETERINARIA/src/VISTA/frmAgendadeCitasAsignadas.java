@@ -6,6 +6,10 @@ public class frmAgendadeCitasAsignadas extends javax.swing.JInternalFrame {
 
    public MODELO.Empleados veterinarioLogueado;
    
+   public frmAgendadeCitasAsignadas() {
+        initComponents();
+    }
+   
    public frmAgendadeCitasAsignadas(MODELO.Empleados emp) {
         initComponents();
         this.veterinarioLogueado = emp;

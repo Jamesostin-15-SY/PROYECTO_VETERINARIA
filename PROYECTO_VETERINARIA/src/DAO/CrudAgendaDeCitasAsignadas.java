@@ -8,9 +8,12 @@ import java.util.List;
 public class CrudAgendaDeCitasAsignadas {
 
     public List<Citas> listarCitasAsignadas(String dniVeterinario) {
+        System.out.println("DEBUG: Consultando citas para el DNI: " + dniVeterinario);
+        
         List<Citas> lista = new ArrayList<>();
         
-        // Query adaptado exactamente al nuevo diseño de tablas de tus compañeros
+        
+        
         String sql = "SELECT c.id_cita, m.nombre_mascota, e.primer_nombre AS nombre_vet, "
                 + "s.nombre_servicio, est.nombre_estado, c.motivo_cita, c.fecha_hora "
                 + "FROM citas c "
