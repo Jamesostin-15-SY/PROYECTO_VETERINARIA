@@ -1,6 +1,7 @@
 package CONTROLADOR;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane; 
 import DAO.*;
 import FACTORY.*;
 import MODELO.*;
@@ -32,6 +33,10 @@ public class ControladorMenu implements ActionListener {
         vistaMenu.setExtendedState(JFrame.MAXIMIZED_BOTH);
         vistaMenu.setVisible(true);
         ControladorPermisos.AplicarRestricciones(vistaMenu, usuarioLogueado.getFk_id_role());
+        
+        if (usuarioLogueado.getFk_id_role() != 3) {
+            vistaMenu.itemCitas.setVisible(false);
+        }
     }
 
     private Empleados obtenerEmpleadoPorDni(String dni) {
@@ -49,17 +54,23 @@ public class ControladorMenu implements ActionListener {
         } else if (e.getSource() == vistaMenu.itemAgenda) {
             VistasFactory.CrearVista("AgendaCitas", "Agenda de Citas", vistaMenu.spnContenedor);
         } else if (e.getSource() == vistaMenu.itemCitas) {
+            
+            if (usuarioLogueado.getFk_id_role() != 3) {
+                JOptionPane.showMessageDialog(vistaMenu, 
+                    "Esta sección es exclusiva para el personal médico (Veterinarios).", 
+                    "Acceso Denegado", 
+                    JOptionPane.ERROR_MESSAGE);
+                return; 
+            }
+            
             String dni = usuarioLogueado.getFk_dni_empleado();
             Empleados emp = obtenerEmpleadoPorDni(dni);
             
-            // Creamos la vista y la asignamos a un objeto genérico para evitar conflictos de compilación
             Object vista = VistasFactory.CrearVista("AgendasAsignadas", "Agenda de Citas Asignadas", vistaMenu.spnContenedor);
             
             if (vista instanceof frmAgendadeCitasAsignadas) {
                 frmAgendadeCitasAsignadas vistaAgenda = (frmAgendadeCitasAsignadas) vista;
-                // Inyectamos el objeto empleado correctamente
                 vistaAgenda.veterinarioLogueado = emp;
-                // Inicializamos su controlador pasando la vista ya configurada
                 new ControladorAgendaDeCitasAsignadas(vistaAgenda);
             }
         } else if (e.getSource() == vistaMenu.itemMantenimiento) {

@@ -24,18 +24,17 @@ public class ControladorDeServicios implements ActionListener {
         cargarTablaServicios();
         cargarComboEstados();
 
-        // Escuchadores de tus botones (Nombres exactos)
         this.vista.btnGuardar.addActionListener(this);       
         this.vista.btnNuevo.addActionListener(this); 
-        this.vista.btnModificar.addActionListener(this); // Escuchador para btnModifica
+        this.vista.btnModificar.addActionListener(this); 
 
-        // EVENTO DE CLIC EN LA TABLA PARA CAPTURAR EL ID
+
         this.vista.tblServicios.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 int filaSeleccionada = vista.tblServicios.getSelectedRow();
                 if (filaSeleccionada >= 0) {
-                    // El ID está guardado en la columna 0 de la tabla
+
                     String id = vista.tblServicios.getValueAt(filaSeleccionada, 0).toString();
                     vista.txtIdServicio.setText(id);
                 }
@@ -63,7 +62,7 @@ public class ControladorDeServicios implements ActionListener {
             }
         };
 
-        // 🚨 ESTA LÍNEA ES LA MAGIA: Asegura que el modelo empiece completamente limpio
+
         model.setRowCount(0); 
 
         List<Object[]> lista = dao.listarServiciosTabla();
@@ -81,19 +80,19 @@ public class ControladorDeServicios implements ActionListener {
         if (e.getSource() == this.vista.btnNuevo) {
             limpiarCampos();
         }
-        if (e.getSource() == this.vista.btnModificar) { // Modificado para btnModifica
+        if (e.getSource() == this.vista.btnModificar) { 
             ejecutarModificacionEstado();
         }
     }
 
     private void limpiarCampos() {
-        // 1. Limpiamos todas las cajas de texto y componentes de entrada
+
         this.vista.txtNombreServicio.setText("");
         this.vista.spPrecio.setValue(0); 
         this.vista.txaDescripcion.setText(""); 
         this.vista.txtIdServicio.setText("");
         
-        // 2. Vaciamos las filas de la tabla sin romper su estructura de columnas
+
         DefaultTableModel modeloActual = (DefaultTableModel) this.vista.tblServicios.getModel();
         modeloActual.setRowCount(0); 
     }
@@ -118,16 +117,16 @@ public class ControladorDeServicios implements ActionListener {
         nuevoServicio.setNombre_servicio(nombre);
         nuevoServicio.setPrecio(precio);
 
-        // Enviamos al DAO
+
         boolean exito = dao.registrarServicio(nuevoServicio, descripcion);
 
         if (exito) {
             JOptionPane.showMessageDialog(vista, "Servicio guardado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             
-            // Reestablecemos toda la tabla con los datos actualizados de la base de datos
+
             cargarTablaServicios(); 
             
-            // Limpiamos los campos de texto de la derecha
+
             this.vista.txtNombreServicio.setText("");
             this.vista.spPrecio.setValue(0); 
             this.vista.txaDescripcion.setText(""); 
@@ -137,7 +136,7 @@ public class ControladorDeServicios implements ActionListener {
         }
     }
 
-    // ACCIÓN DEL BOTÓN MODIFICA
+
     private void ejecutarModificacionEstado() {
         String idStr = this.vista.txtIdServicio.getText().trim();
         int indexEstado = this.vista.cbxEstadoServicio.getSelectedIndex();
